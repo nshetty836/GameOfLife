@@ -1,4 +1,3 @@
-#include <vector>
 #include <iostream>
 using namespace std;
 class Cell{
@@ -6,9 +5,11 @@ class Cell{
 		Cell();
 		Cell(bool alive);
 		~Cell();
-		void setDead(bool alive);
+		bool getState();
+		void setDead();
 		void setAlive();
-		void updateState(vector<Cell> neighbors ); //idk if this will work (pointer?)
+		bool equals(Cell c);
+		void updateState(Cell *neighbors[]); //idk if this will work (pointer?)
 		string toString(); // "-" for dead cells and "X" for live cells
 
 
