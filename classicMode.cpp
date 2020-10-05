@@ -5,14 +5,14 @@
 using namespace std;
 
 classicMode::classicMode(){
-  neighbor = 0; 
+  neighbor = 0;
   row = 0;
   column  = 0;
 }
 
 //constructor
 classicMode::classicMode(int row, int column){
-  // what goes in here idk 
+  // what goes in here idk
   	}
 }
 
@@ -31,14 +31,14 @@ void classicMode::runSimulation(){
 
     // CORNER CELL
       if((i == 0) && (j == 0)){
-        if(gameGrid1[i][j+1].toString() == “X”){
+        if(gameGrid1[i][j+1].toString() == "X"){
             neighbor++;
           }
-          if(gameGrid1[i+1][j].toString() == “X”){
+          if(gameGrid1[i+1][j].toString() == "X"){
 
             neighbor++;
           }
-          if(gameGrid1[i+1][j+1].toString() == “X”){
+          if(gameGrid1[i+1][j+1].toString() == "X"){
             neighbor++;
           }
 
@@ -48,172 +48,172 @@ void classicMode::runSimulation(){
         }
 
       else if((i == 0) && (j == (column - 1))){
-        if(gameGrid1[i][j+1].toString() == “X”){
+        if(gameGrid1[i][j+1].toString() == "X"){
           neighbor++;
         }
-        if(gameGrid1[i+1][j].toString() == “X”'){
+        if(gameGrid1[i+1][j].toString() == "X"){
           neighbor++;
         }
-        if(gameGrid1[i+1][j-1].toString() == “X”){
+        if(gameGrid1[i+1][j-1].toString() == "X"){
           neighbor++;
         }
         // NEW CELL >> gameGrid2
         getGrid(i, j, neighbor);
         neighbor = 0;
       }
-      
+
       else if((i == (row - 1)) && (j == (column - 1))){
-        if(gameGrid1[i][j-1].toString() == “X”){
+        if(gameGrid1[i][j-1].toString() == "X"){
           neighbor++;
         }
-        if(gameGrid1[i-1][j].toString() == “X”'){
+        if(gameGrid1[i-1][j].toString() == "X"'){
           neighbor++;
         }
-        if(gameGrid1[i-1][j-1].toString() == “X”){
+        if(gameGrid1[i-1][j-1].toString() == "X"){
           neighbor++;
         }
 
-        // NEW CELL >> gameGrid2 
+        // NEW CELL >> gameGrid2
         getGrid(i, j, neighbor);
         neighbor = 0;
 
       }
       // CORNER CELL
       else if((i == (row - 1)) && (j == 0)){
-        if(gameGrid1[i][j+1].toString() == “X”){
+        if(gameGrid1[i][j+1].toString() == "X"){
           neighbor++;
         }
-        if(gameGrid1[i-1][j].toString() == “X”){
+        if(gameGrid1[i-1][j].toString() == "X"){
           neighbor++;
         }
-        if(gameGrid1[i-1][j+1].toString() == “X”){
+        if(gameGrid1[i-1][j+1].toString() == "X"){
           neighbor++;
         }
 
-        // NEW CELL >> gameGrid2 
+        // NEW CELL >> gameGrid2
         getGrid(i, j, neighbor);
         neighbor = 0;
       }
-      
+
       else if((!(i == 0) || (!(i == (row - 2)))) && (j == 0)){
-        if(gameGrid1[i-1][j].toString() == “X”){
+        if(gameGrid1[i-1][j].toString() == "X"){
           neighbor++;
         }
-        if(gameGrid1[i-1][j+1].toString() == “X”){
+        if(gameGrid1[i-1][j+1].toString() == "X"){
           neighbor++;
         }
-        if(gameGrid1[i][j+1].toString() == “X”){
+        if(gameGrid1[i][j+1].toString() == "X"){
           neighbor++;
         }
-        if(gameGrid1[i+1][j+1].toString() == “X”){
+        if(gameGrid1[i+1][j+1].toString() == "X"){
           neighbor++;
         }
-        if(gameGrid1[i+1][j].toString() == “X”){
+        if(gameGrid1[i+1][j].toString() == "X"){
           neighbor++;
         }
 
-        // NEW CELL >> gameGrid2 
+        // NEW CELL >> gameGrid2
         getGrid(i, j, neighbor);
         neighbor = 0;
       }
-      
+
       // LOWER COLUMN
       else if((0 < i <= (row - 2)) && (j == (column - 1))){
-        if(gameGrid1[i-1][j].toString() == “X”){
+        if(gameGrid1[i-1][j].toString() == "X"){
           neighbor++;
         }
-        if(gameGrid1[i-1][j-1].toString() == “X”){
+        if(gameGrid1[i-1][j-1].toString() == "X"){
           neighbor++;
         }
-        if(gameGrid1[i][j-1].toString() == “X”){
+        if(gameGrid1[i][j-1].toString() == "X"){
           neighbor++;
         }
-        if(gameGrid1[i+1][j-1].toString() == “X”){
+        if(gameGrid1[i+1][j-1].toString() == "X"){
           neighbor++;
         }
-        if(gameGrid1[i+1][j].toString() == “X”){
+        if(gameGrid1[i+1][j].toString() == "X"){
           neighbor++;
         }
 
-        // NEW CELL >> gameGrid2 
+        // NEW CELL >> gameGrid2
         getGrid(i, j, neighbor);
         neighbor = 0;
       }
-      
+
       // UPPER ROW
       else if((i == 0) && (0 < j <= (column - 2))){
-        if(gameGrid1[i][j-1].toString() == “X”){
+        if(gameGrid1[i][j-1].toString() == "X"){
           neighbor++;
         }
-        if(gameGrid1[i+1][j-1].toString() == “X”){
+        if(gameGrid1[i+1][j-1].toString() == "X"){
           neighbor++;
         }
-        if(gameGrid1[i+1][j].toString() == “X”){
+        if(gameGrid1[i+1][j].toString() == "X"){
           neighbor++;
         }
-        if(gameGrid1[i+1][j+1].toString() == “X”){
+        if(gameGrid1[i+1][j+1].toString() == "X"){
           neighbor++;
         }
-        if(gameGrid1[i][j+1].toString() == “X”){
+        if(gameGrid1[i][j+1].toString() == "X"){
           neighbor++;
         }
 
-        // NEW CELL >> gameGrid2 
+        // NEW CELL >> gameGrid2
         getGrid(i, j, neighbor);
         neighbor = 0;
       }
-      
+
       // LOWER ROW
       else if((i == (row - 1)) && (0 < j <= (column - 2))){
-        if(gameGrid1[i][j-1].toString() == “X”){
+        if(gameGrid1[i][j-1].toString() == "X"){
           neighbor++;
         }
-        if(gameGrid1[i-1][j-1].toString() == “X”){
+        if(gameGrid1[i-1][j-1].toString() == "X"){
           neighbor++;
         }
-        if(gameGrid1[i-1][j].toString() == “X”){
+        if(gameGrid1[i-1][j].toString() == "X"){
           neighbor++;
         }
-        if(gameGrid1[i-1][j+1].toString() == “X”){
+        if(gameGrid1[i-1][j+1].toString() == "X"){
           neighbor++;
         }
-        if(gameGrid1[i][j+1].toString() == “X”){
+        if(gameGrid1[i][j+1].toString() == "X"){
           neighbor++;
         }
 
-        // NEW CELL >> gameGrid2 
+        // NEW CELL >> gameGrid2
         getGrid(i, j, neighbor);
         neighbor = 0;
       }
-      
-      // MIDDLE CELLS 
+
+      // MIDDLE CELLS
       else{
-        if(gameGrid1[i-1][j-1].toString() == “X”){
+        if(gameGrid1[i-1][j-1].toString() == "X"){
           neighbor++;
         }
-        if(gameGrid1[i-1][j].toString() == “X”){
+        if(gameGrid1[i-1][j].toString() == "X"){
           neighbor++;
         }
-        if(gameGrid1[i-1][j+1].toString() == “X”){
+        if(gameGrid1[i-1][j+1].toString() == "X"){
           neighbor++;
         }
-        if(gameGrid1[i][j-1].toString() == “X”){
+        if(gameGrid1[i][j-1].toString() == "X"){
           neighbor++;
         }
-        if(gameGrid1[i][j+1].toString() == “X”){
+        if(gameGrid1[i][j+1].toString() == "X"){
           neighbor++;
         }
-        if(gameGrid1[i+1][j-1].toString() == “X”){
+        if(gameGrid1[i+1][j-1].toString() == "X"){
           neighbor++;
         }
-        if(gameGrid1[i+1][j].toString() == “X”){
+        if(gameGrid1[i+1][j].toString() == "X"){
           neighbor++;
         }
-        if(gameGrid1[i+1][j+1].toString() == “X”){
+        if(gameGrid1[i+1][j+1].toString() == "X"){
           neighbor++;
         }
 
-        // NEW CELL >> gameGrid2 
+        // NEW CELL >> gameGrid2
         getGrid(i, j, neighbor);
         neighbor = 0;
       }

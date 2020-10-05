@@ -13,8 +13,6 @@ class ClassicMode{
     char *gameGrid1;
     char *gameGrid2;
     
-
-
   //methods
   public:
     ClassicMode();
