@@ -19,7 +19,6 @@ void FileReader::readFile(string fileName){
     fileIn >> width;
     //TODO: Read grid from file and make Grid Object with those specs
   }
-
   cout << "Height: " << height << endl;
   cout << "Width: " << width << endl;
 }

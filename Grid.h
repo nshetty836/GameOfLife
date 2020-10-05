@@ -8,6 +8,8 @@ class Grid{
     Grid();
   	Grid(int width, int height);
   	~Grid();
+    Cell** gridArray;
+
 
 	  void randPopulate(double popDensity);  //makes random grid
     int genRandNum(int low, int high);
@@ -23,7 +25,6 @@ class Grid{
 
 
   private:
-		Cell** gridArray;
     int rows;
 		int columns;
 

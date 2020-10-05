@@ -2,6 +2,7 @@
 #include <cmath>
 
 #include "Grid.h"
+#include "FileReader.h"
 
 using namespace std;
 Grid::Grid(){
@@ -28,16 +29,15 @@ int Grid::genRandNum(int low, int high){
 	return (rand() % (high - low + 1)) + low;
 }
 
-//makes random grid
+//makes random cell grid given a population density
 void Grid::randPopulate(double popDensity) {
 	int numAlive = round(popDensity * rows * columns);
 	cout << numAlive << endl; 	//TEST
 	for(int i = 0; i < numAlive; i++){
 		int num1 = genRandNum(0,rows-1);
 		int num2 = genRandNum(0,columns-1);
-		if(gridArray[num1][num2].getState() == false){
+		if(gridArray[num1][num2].getState() == false)
 			gridArray[num1][num2].setAlive();
-		}
 		else
 			i--;
 	}
@@ -46,6 +46,10 @@ void Grid::randPopulate(double popDensity) {
 
 
 void Grid::filePopulate(string fileInput){
+	FileReader *fr = new FileReader();
+	fr->readFile(fileInput);
+
+
 
 }
 
@@ -56,7 +60,7 @@ int Grid::getColumns(){
 	return columns;
 }
 Cell Grid::getCell(int row, int col){
-
+	return gridArray[row][col];
 }
 
 //prints grid as a string (access w fileReader class)
