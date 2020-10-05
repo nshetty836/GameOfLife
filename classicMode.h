@@ -11,16 +11,14 @@ class ClassicMode{
     int row;
     int column;
 
-  //char *gameGrid1;
-  //char *gameGrid2;
-    Grid gameGrid1;
-    Grid gameGrid2;
+    Grid *gameGrid1;
+    Grid *gameGrid2;
 
 
   //methods
   public:
     ClassicMode();
-    ClassicMode(int row, int column, gameGrid1);
+    ClassicMode(int row, int column, Grid gameGrid1);
     ~ClassicMode();
     bool isEqual();
     void runSimulation();

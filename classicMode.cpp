@@ -4,30 +4,41 @@
 
 using namespace std;
 
+//TO DO: change all attempts to access gameGrid like gameGrid[i][j] to
+// gameGrid.getCell(i, j)
+
 ClassicMode::ClassicMode(){
   neighbor = 0;
-  row = 0;
-  column  = 0;
+  row = 5;
+  column  = 5;
+  gameGrid1 = new Grid(row, column);
+  gameGrid2 = new Grid(row, column);
+
 }
 
 //constructor
-ClassicMode::ClassicMode(int r, int c, gameGrid1){
+ClassicMode::ClassicMode(int r, int c, Grid gameGrid1){
   // what goes in here idk
 
   row = r;
   column = c;
 
-  Grid gameGrid1 = new Grid;
+  //FIX THIS (maybe make another overloaded constructor in Grid to copy a grid)
+  gameGrid2 = new Grid(row, column);
   for(int i = 0; i < row ; i++){
-       gameGrid2[i] = new char[column];
-
+    for(int j = 0; j < column; j++)
+      if(gameGrid1.getCell(i, j).toString() == "X")
+       gameGrid2->gridArray[i][j] = new Cell(true);
   	}
+  }
 //destructor
 ClassicMode::~ClassicMode(){
-delete gameGrid1;
-delete gameGrid2;
+  //TO DO: FIX THIS
+// delete gameGrid1;
+// delete gameGrid2;
 
 }
+
 // runSimulation is just a placeholder don't know what we are calling this yet btw
 void ClassicMode::runSimulation(){
 
@@ -37,7 +48,7 @@ void ClassicMode::runSimulation(){
 
     // CORNER CELL
       if((i == 0) && (j == 0)){
-        if(gameGrid1[i][j+1].toString() == "X"){
+        if(gameGrid1.getCell(i, j+1).toString() == "X"){
             neighbor++;
           }
           if(gameGrid1[i+1][j].toString() == "X"){
@@ -229,14 +240,14 @@ void ClassicMode::runSimulation(){
 
 
 // checking if game grids are the same
-bool ClassicMode::isEqual(){
-  for(int i = 0; i < row; i++){
-    for(int j = 0; j < column; j++){
-        if (gameGrid1[i][j] != gameGrid2[i][j]){
-            return false;
-        }
-      }
-    }
-  return true;
-}
-}
+// bool ClassicMode::isEqual(){
+//   for(int i = 0; i < row; i++){
+//     for(int j = 0; j < column; j++){
+//         if (gameGrid1[i][j] != gameGrid2[i][j]){
+//             return false;
+//         }
+//       }
+//     }
+//   return true;
+// }
+// }
