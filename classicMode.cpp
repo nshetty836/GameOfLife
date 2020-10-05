@@ -1,29 +1,35 @@
-#include "classicMode.h"
+#include "ClassicMode.h"
 #include <iostream>
 #include <fstream>
 
 using namespace std;
 
-classicMode::classicMode(){
+ClassicMode::ClassicMode(){
   neighbor = 0;
   row = 0;
   column  = 0;
 }
 
 //constructor
-classicMode::classicMode(int row, int column){
+ClassicMode::ClassicMode(int r, int c, gameGrid1){
   // what goes in here idk
-  	}
-}
 
+  row = r;
+  column = c;
+
+  Grid gameGrid1 = new Grid;
+  for(int i = 0; i < row ; i++){
+       gameGrid2[i] = new char[column];
+
+  	}
 //destructor
-classicMode::~classicMode(){
+ClassicMode::~ClassicMode(){
 delete gameGrid1;
 delete gameGrid2;
 
 }
 // runSimulation is just a placeholder don't know what we are calling this yet btw
-void classicMode::runSimulation(){
+void ClassicMode::runSimulation(){
 
   for(int i = 0; i < row; i++){
     for(int j = 0; j < column; j++){
@@ -66,7 +72,7 @@ void classicMode::runSimulation(){
         if(gameGrid1[i][j-1].toString() == "X"){
           neighbor++;
         }
-        if(gameGrid1[i-1][j].toString() == "X"'){
+        if(gameGrid1[i-1][j].toString() == "X"){
           neighbor++;
         }
         if(gameGrid1[i-1][j-1].toString() == "X"){
@@ -220,8 +226,10 @@ void classicMode::runSimulation(){
     }
   }
 }
+
+
 // checking if game grids are the same
-bool classicMode::isEqual(){
+bool ClassicMode::isEqual(){
   for(int i = 0; i < row; i++){
     for(int j = 0; j < column; j++){
         if (gameGrid1[i][j] != gameGrid2[i][j]){
@@ -230,4 +238,5 @@ bool classicMode::isEqual(){
       }
     }
   return true;
+}
 }
