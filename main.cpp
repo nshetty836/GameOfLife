@@ -16,14 +16,14 @@ int main(int argc, char** argv){
   // fr->readFile(fileName);
   // fr->readFile(fileName);
   // Grid *g1 = new Grid("cellinput.txt");
-  ClassicMode *cm = new ClassicMode();
+  ClassicMode *cm = new ClassicMode("cellinput.txt");
   // Grid *g2 = new Grid(7,7);
 
   // g1 -> randPopulate(.25);
   // g2 -> randPopulate(.5);
   // cout << boolalpha << g1 -> equals(g2) << endl;
   cm -> runSimulation();
-  cout << cm -> tempGrid-> toString() << endl;
+  cout << cm -> toString() << endl;
   // cout << g2 -> toString() << endl;
 
 

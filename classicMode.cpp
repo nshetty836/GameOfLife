@@ -57,15 +57,15 @@ ClassicMode::~ClassicMode(){
 
 void ClassicMode::getGrid(int i, int j, int nc){
     if(nc == 3){
-      tempGrid->getCell(i,j).toString() == "X";
+      tempGrid->getCell(i,j).setAlive();
     }
     //one or less neighbors = death
     else if(nc == 0){
-      tempGrid->getCell(i,j).toString() == "-";
+      tempGrid->getCell(i,j).setDead();
     }
     //one or less neighbors = death
     else if(nc == 1){
-    tempGrid->getCell(i,j).toString() == "-";
+    tempGrid->getCell(i,j).setDead();
     }
     //two neighbors = no change / stable
     else if(nc == 2){
@@ -73,10 +73,10 @@ void ClassicMode::getGrid(int i, int j, int nc){
     }
     // 4+ neighbors = death
     else if(nc == 4){
-    tempGrid->getCell(i,j).toString() == "-";
+    tempGrid->getCell(i,j).setDead();
     }
     else{
-      tempGrid->getCell(i,j).toString() == "-";
+      tempGrid->getCell(i,j).setDead();
     }
 }
 
