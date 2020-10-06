@@ -2,7 +2,7 @@
 #include <cmath>
 
 #include "Grid.h"
-#include "FileReader.h"
+#include "FileProcessor.h"
 
 using namespace std;
 Grid::Grid(){
@@ -19,6 +19,35 @@ Grid::Grid(int width, int height){
 	gridArray = new Cell*[rows];
   for(int i = 0; i < rows; i++)
       gridArray[i] = new Cell[columns];
+}
+
+Grid::Grid(string fileInput){
+	FileProcessor *fr = new FileProcessor();
+	fr->readFile(fileInput);
+	rows = fr->rows;
+	columns = fr->columns;
+	gridArray = new Cell*[rows];
+  for(int i = 0; i < rows; i++)
+      gridArray[i] = new Cell[columns];
+
+	int count = 0;
+	for(int i = 0; i < fr->rows; i++){
+		for(int j = 0; j < fr->columns; j++){
+			if(fr->allCells[count] != ' ' && fr->allCells[count] == 'X'){
+				gridArray[i][j].setAlive();
+			}
+			count++;
+		}
+	}
+
+	// for (int i = 0; i < fr->gridSize; i++) {
+  //   if(allCells[i] != ' ')
+  //     gridCells[i] = allCells[i];
+  // }
+  // for (int i = 0; i < gridSize; i++) {
+  //   cout << gridCells[i];
+  // }
+
 }
 
 Grid::~Grid(){
@@ -45,14 +74,6 @@ void Grid::randPopulate(double popDensity) {
 }
 
 
-void Grid::filePopulate(string fileInput){
-	FileReader *fr = new FileReader();
-	fr->readFile(fileInput);
-
-
-
-}
-
 int Grid::getRows(){
 	return rows;
 }
@@ -63,7 +84,7 @@ Cell Grid::getCell(int row, int col){
 	return gridArray[row][col];
 }
 
-//prints grid as a string (access w fileReader class)
+//prints grid as a string (access w FileProcessor class)
 bool Grid::equals(Grid *g){
 	bool equals = false;
 	if(rows == g->getRows() && columns == g->getColumns()){
