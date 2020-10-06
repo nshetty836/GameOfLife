@@ -1,8 +1,8 @@
 #include <iostream>
 #include <fstream>
 
-#include "FileReader.h"
-#include "Grid.h"
+// #include "Grid.h"
+#include "ClassicMode.h"
 
 using namespace std;
 int main(int argc, char** argv){
@@ -13,8 +13,20 @@ int main(int argc, char** argv){
   // cout << "Enter file name: ";
   // cin >> fileName;
   // fr->readFile(fileName);
-  Grid *myGrid = new Grid(7,7);
-  
+  // fr->readFile(fileName);
+  // fr->readFile(fileName);
+  // Grid *g1 = new Grid("cellinput.txt");
+  ClassicMode *cm = new ClassicMode();
+  // Grid *g2 = new Grid(7,7);
 
-  cout << myGrid -> toString() << endl;
+  // g1 -> randPopulate(.25);
+  // g2 -> randPopulate(.5);
+  // cout << boolalpha << g1 -> equals(g2) << endl;
+  cm -> runSimulation();
+  cout << cm -> tempGrid-> toString() << endl;
+  // cout << g2 -> toString() << endl;
+
+
+  // delete g1;
+  // delete g2;
 }
