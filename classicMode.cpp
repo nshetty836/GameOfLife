@@ -1,4 +1,5 @@
 #include "ClassicMode.h"
+//#include "Grid.h"
 #include <iostream>
 #include <fstream>
 
@@ -41,17 +42,20 @@ ClassicMode::~ClassicMode(){
 void ClassicMode::getGrid(int i, int j, int nc){
     if(nc == 3){
       tempGrid->getCell(i,j).toString() == "X";
-
     }
+    //one or less neighbors = death
     else if(nc == 0){
       tempGrid->getCell(i,j).toString() == "-";
     }
+    //one or less neighbors = death
     else if(nc == 1){
     tempGrid->getCell(i,j).toString() == "-";
     }
+    //two neighbors = no change / stable
     else if(nc == 2){
       tempGrid->getCell(i,j) = gameGrid->getCell(i,j);
     }
+    // 4+ neighbors = death
     else if(nc == 4){
     tempGrid->getCell(i,j).toString() == "-";
     }
