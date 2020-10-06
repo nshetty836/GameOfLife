@@ -21,6 +21,8 @@ class Grid{
     void advanceGen(); //move all Cells forward one generation
     Cell* getNeighbors(int row, int col);  //THIS IS WHAT CHANGES FOR DIFF MODES
     bool equals(Grid *g);
+    void clearGrid();
+
 
 
 

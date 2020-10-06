@@ -111,6 +111,14 @@ Cell* Grid::getNeighbors(int row, int col){
 
 }
 
+void Grid::clearGrid(){
+	for(int i = 0; i < rows ; i++){
+		for(int j = 0; j < columns; j++){
+			gridArray[i][j].setDead();
+		}
+	}
+}
+
 string Grid::toString(){
 	string ret = "";
 	for(int i = 0; i < rows; i++){

@@ -59,27 +59,30 @@ ClassicMode::~ClassicMode(){
 
 void ClassicMode::getGrid(int i, int j, int nc){
     if(nc == 3){
-      tempGrid->getCell(i,j).setAlive();
+      tempGrid->gridArray[i][j].setAlive();
     }
     //one or less neighbors = death
     else if(nc == 0){
-      tempGrid->getCell(i,j).setDead();
+      tempGrid->gridArray[i][j].setDead();
     }
     //one or less neighbors = death
     else if(nc == 1){
-    tempGrid->getCell(i,j).setDead();
+      tempGrid->gridArray[i][j].setDead();
     }
     //two neighbors = no change / stable
     else if(nc == 2){
-      tempGrid->getCell(i,j) = gameGrid->getCell(i,j);
+      tempGrid->gridArray[i][j] = gameGrid->getCell(i,j);
     }
     // 4+ neighbors = death
     else if(nc == 4){
-    tempGrid->getCell(i,j).setDead();
+      tempGrid->gridArray[i][j].setDead();
     }
     else{
-      tempGrid->getCell(i,j).setDead();
+      tempGrid->gridArray[i][j].setDead();
     }
+
+    // cout << "UPDATED TEMP" << endl;
+    // cout << tempGrid->toString() << endl;
 }
 
 void ClassicMode::runSimulation(){
@@ -100,6 +103,7 @@ void ClassicMode::runSimulation(){
           if(gameGrid->getCell(i+1,j+1).getState() == true){
             neighbor++;
           }
+
 
           // NEW CELL >> tempGrid
           getGrid(i, j, neighbor);
@@ -203,7 +207,7 @@ void ClassicMode::runSimulation(){
       }
 
       // UPPER ROW
-      else if((i == 0) && (0 < j <= (column - 2))){
+      else if((i == 0) && (0 < j && j <= (column - 2))){
         if(gameGrid->getCell(i, j-1).getState() == true){
           neighbor++;
         }
@@ -226,7 +230,7 @@ void ClassicMode::runSimulation(){
       }
 
       // LOWER ROW
-      else if((i == (row - 1)) && (0 < j <= (column - 2))){
+      else if((i == (row - 1)) && (0 < j && j <= (column - 2))){
         if(gameGrid->getCell(i, j-1).getState() == true){
           neighbor++;
         }
@@ -242,6 +246,7 @@ void ClassicMode::runSimulation(){
         if(gameGrid->getCell(i, j+1).getState() == true){
           neighbor++;
         }
+
 
         // NEW CELL >> tempGrid
         getGrid(i, j, neighbor);
@@ -278,13 +283,27 @@ void ClassicMode::runSimulation(){
         // NEW CELL >> tempGrid
         getGrid(i, j, neighbor);
         neighbor = 0;
+
       }
     }
   }
+  // cout << "TEST TEMP" << endl;
+  // cout << tempGrid -> toString() << endl;
+
+  gameGrid->clearGrid();
+  for(int i = 0; i < row ; i++){
+    for(int j = 0; j < column; j++){
+      if(tempGrid->getCell(i, j).getState() == true)
+       gameGrid->gridArray[i][j].setAlive();
+    }
+  }
+  // cout << "TEST" << endl;
+  // cout << gameGrid -> toString() << endl;
+  tempGrid->clearGrid();
 }
 
 string ClassicMode::toString(){
-  return tempGrid->toString();
+  return gameGrid->toString();
 }
 
 

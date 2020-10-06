@@ -24,6 +24,12 @@ int main(int argc, char** argv){
   // cout << boolalpha << g1 -> equals(g2) << endl;
   cm -> runSimulation();
   cout << cm -> toString() << endl;
+  cm -> runSimulation();
+  cout << cm -> toString() << endl;
+
+  cm -> runSimulation();
+  cout << cm -> toString() << endl;
+
   // cout << g2 -> toString() << endl;
 
 
