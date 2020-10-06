@@ -31,6 +31,22 @@ ClassicMode::ClassicMode(int r, int c, Grid gameGrid){
        tempGrid->gridArray[i][j] = new Cell(true);
   	}
   }
+
+ClassicMode::ClassicMode(string fileName){
+
+  gameGrid = new Grid(fileName);
+  row = gameGrid->getRows();
+  column = gameGrid->getColumns();
+
+  //FIX THIS (maybe make another overloaded constructor in Grid to copy a grid)
+  tempGrid = new Grid(row, column);
+
+  for(int i = 0; i < row ; i++){
+    for(int j = 0; j < column; j++)
+      if(gameGrid->getCell(i, j).toString() == "X")
+       tempGrid->gridArray[i][j] = new Cell(true);
+  	}
+  }
 //destructor
 ClassicMode::~ClassicMode(){
   //TO DO: FIX THIS

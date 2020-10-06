@@ -19,6 +19,7 @@ class ClassicMode{
   public:
     ClassicMode();
     ClassicMode(int row, int column, Grid gameGrid);
+    ClassicMode(string fileName);
     ~ClassicMode();
     bool isEqual();
     void runSimulation();

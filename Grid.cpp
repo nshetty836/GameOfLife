@@ -13,9 +13,9 @@ Grid::Grid(){
       gridArray[i] = new Cell[columns];
 }
 
-Grid::Grid(int width, int height){
-	rows = height;
-	columns = width;
+Grid::Grid(int r, int c){
+	rows = r;
+	columns = c;
 	gridArray = new Cell*[rows];
   for(int i = 0; i < rows; i++)
       gridArray[i] = new Cell[columns];
