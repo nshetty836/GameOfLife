@@ -263,7 +263,7 @@ void ClassicMode::runSimulation(){
 }
 
 
-// checking if game grids are the same
+//checking if game grids are the same
 // bool ClassicMode::isEqual(){
 //   for(int i = 0; i < row; i++){
 //     for(int j = 0; j < column; j++){

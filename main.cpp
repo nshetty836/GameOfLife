@@ -6,7 +6,7 @@
 
 using namespace std;
 int main(int argc, char** argv){
-  FileReader *fr = new FileReader();
+  //FileReader *fr = new FileReader();
   string fileName;
 
   //TODO: ask user if they want a random game or input a file
@@ -14,6 +14,7 @@ int main(int argc, char** argv){
   // cin >> fileName;
   // fr->readFile(fileName);
   Grid *myGrid = new Grid(7,7);
+  
 
   cout << myGrid -> toString() << endl;
 }
