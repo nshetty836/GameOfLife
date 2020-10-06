@@ -85,7 +85,7 @@ void ClassicMode::getGrid(int i, int j, int nc){
     // cout << tempGrid->toString() << endl;
 }
 
-void ClassicMode::runSimulation(){
+void ClassicMode::advanceGen(){
 
   for(int i = 0; i < row; i++){
     for(int j = 0; j < column; j++){
