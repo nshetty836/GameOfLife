@@ -26,9 +26,10 @@ ClassicMode::ClassicMode(int r, int c, Grid gameGrid){
   //FIX THIS (maybe make another overloaded constructor in Grid to copy a grid)
   tempGrid = new Grid(row, column);
   for(int i = 0; i < row ; i++){
-    for(int j = 0; j < column; j++)
+    for(int j = 0; j < column; j++){
       if(gameGrid.getCell(i, j).toString() == "X")
        tempGrid->gridArray[i][j] = new Cell(true);
+     }
   	}
   }
 
@@ -42,9 +43,10 @@ ClassicMode::ClassicMode(string fileName){
   tempGrid = new Grid(row, column);
 
   for(int i = 0; i < row ; i++){
-    for(int j = 0; j < column; j++)
+    for(int j = 0; j < column; j++){
       if(gameGrid->getCell(i, j).toString() == "X")
        tempGrid->gridArray[i][j] = new Cell(true);
+     }
   	}
   }
 //destructor
@@ -88,14 +90,14 @@ void ClassicMode::runSimulation(){
 
     // CORNER CELL
       if((i == 0) && (j == 0)){
-        if(gameGrid->getCell(i, j+1).toString() == "X"){
+        if(gameGrid->getCell(i, j+1).getState() == true){
             neighbor++;
           }
-          if(gameGrid->getCell(i+1,j).toString() == "X"){
+          if(gameGrid->getCell(i+1,j).getState() == true){
 
             neighbor++;
           }
-          if(gameGrid->getCell(i+1,j+1).toString() == "X"){
+          if(gameGrid->getCell(i+1,j+1).getState() == true){
             neighbor++;
           }
 
@@ -105,14 +107,14 @@ void ClassicMode::runSimulation(){
         }
 
       else if((i == 0) && (j == (column - 1))){
-        if(gameGrid->getCell(i, j+1).toString() == "X"){
+        if(gameGrid->getCell(i, j+1).getState() == true){
             neighbor++;
           }
-          if(gameGrid->getCell(i+1,j).toString() == "X"){
+          if(gameGrid->getCell(i+1,j).getState() == true){
 
             neighbor++;
           }
-          if(gameGrid->getCell(i+1,j-1).toString() == "X"){
+          if(gameGrid->getCell(i+1,j-1).getState() == true){
             neighbor++;
           }
         // NEW CELL >> tempGrid
@@ -121,14 +123,14 @@ void ClassicMode::runSimulation(){
       }
 
       else if((i == (row - 1)) && (j == (column - 1))){
-        if(gameGrid->getCell(i, j-1).toString() == "X"){
+        if(gameGrid->getCell(i, j-1).getState() == true){
             neighbor++;
           }
-          if(gameGrid->getCell(i-1,j).toString() == "X"){
+          if(gameGrid->getCell(i-1,j).getState() == true){
 
             neighbor++;
           }
-          if(gameGrid->getCell(i-1,j-1).toString() == "X"){
+          if(gameGrid->getCell(i-1,j-1).getState() == true){
             neighbor++;
           }
 
@@ -138,16 +140,15 @@ void ClassicMode::runSimulation(){
 
       }
       // CORNER CELL
-
         else if((i == (row - 1)) && (j == 0)){
-          if(gameGrid->getCell(i, j+1).toString() == "X"){
+          if(gameGrid->getCell(i, j+1).getState() == true){
               neighbor++;
             }
-            if(gameGrid->getCell(i-1,j).toString() == "X"){
+            if(gameGrid->getCell(i-1,j).getState() == true){
 
               neighbor++;
             }
-            if(gameGrid->getCell(i-1,j+1).toString() == "X"){
+            if(gameGrid->getCell(i-1,j+1).getState() == true){
               neighbor++;
             }
 
@@ -157,19 +158,19 @@ void ClassicMode::runSimulation(){
       }
 
       else if((!(i == 0) || (!(i == (row - 2)))) && (j == 0)){
-        if(gameGrid->getCell(i-1, j).toString() == "X"){
+        if(gameGrid->getCell(i-1, j).getState() == true){
           neighbor++;
         }
-        if(gameGrid->getCell(i-1, j+1).toString() == "X"){
+        if(gameGrid->getCell(i-1, j+1).getState() == true){
           neighbor++;
         }
-        if(gameGrid->getCell(i, j+1).toString() == "X"){
+        if(gameGrid->getCell(i, j+1).getState() == true){
           neighbor++;
         }
-        if(gameGrid->getCell(i+1, j+1).toString() == "X"){
+        if(gameGrid->getCell(i+1, j+1).getState() == true){
           neighbor++;
         }
-        if(gameGrid->getCell(i+1, j).toString() == "X"){
+        if(gameGrid->getCell(i+1, j).getState() == true){
           neighbor++;
         }
 
@@ -180,19 +181,19 @@ void ClassicMode::runSimulation(){
 
       // LOWER COLUMN
       else if((0 < i <= (row - 2)) && (j == (column - 1))){
-        if(gameGrid->getCell(i-1, j).toString() == "X"){
+        if(gameGrid->getCell(i-1, j).getState() == true){
           neighbor++;
         }
-        if(gameGrid->getCell(i-1, j-1).toString() == "X"){
+        if(gameGrid->getCell(i-1, j-1).getState() == true){
           neighbor++;
         }
-        if(gameGrid->getCell(i, j-1).toString() == "X"){
+        if(gameGrid->getCell(i, j-1).getState() == true){
           neighbor++;
         }
-        if(gameGrid->getCell(i+1, j-1).toString() == "X"){
+        if(gameGrid->getCell(i+1, j-1).getState() == true){
           neighbor++;
         }
-        if(gameGrid->getCell(i+1, j).toString() == "X"){
+        if(gameGrid->getCell(i+1, j).getState() == true){
           neighbor++;
         }
 
@@ -203,19 +204,19 @@ void ClassicMode::runSimulation(){
 
       // UPPER ROW
       else if((i == 0) && (0 < j <= (column - 2))){
-        if(gameGrid->getCell(i, j-1).toString() == "X"){
+        if(gameGrid->getCell(i, j-1).getState() == true){
           neighbor++;
         }
-        if(gameGrid->getCell(i+1, j-1).toString() == "X"){
+        if(gameGrid->getCell(i+1, j-1).getState() == true){
           neighbor++;
         }
-        if(gameGrid->getCell(i+1, j).toString() == "X"){
+        if(gameGrid->getCell(i+1, j).getState() == true){
           neighbor++;
         }
-        if(gameGrid->getCell(i+1, j-1).toString() == "X"){
+        if(gameGrid->getCell(i+1, j-1).getState() == true){
           neighbor++;
         }
-        if(gameGrid->getCell(i, j+1).toString() == "X"){
+        if(gameGrid->getCell(i, j+1).getState() == true){
           neighbor++;
         }
 
@@ -226,19 +227,19 @@ void ClassicMode::runSimulation(){
 
       // LOWER ROW
       else if((i == (row - 1)) && (0 < j <= (column - 2))){
-        if(gameGrid->getCell(i, j-1).toString() == "X"){
+        if(gameGrid->getCell(i, j-1).getState() == true){
           neighbor++;
         }
-        if(gameGrid->getCell(i-1, j-1).toString() == "X"){
+        if(gameGrid->getCell(i-1, j-1).getState() == true){
           neighbor++;
         }
-        if(gameGrid->getCell(i-1, j).toString() == "X"){
+        if(gameGrid->getCell(i-1, j).getState() == true){
           neighbor++;
         }
-        if(gameGrid->getCell(i-1, j+1).toString() == "X"){
+        if(gameGrid->getCell(i-1, j+1).getState() == true){
           neighbor++;
         }
-        if(gameGrid->getCell(i, j+1).toString() == "X"){
+        if(gameGrid->getCell(i, j+1).getState() == true){
           neighbor++;
         }
 
@@ -249,28 +250,28 @@ void ClassicMode::runSimulation(){
 
       // MIDDLE CELLS
       else{
-        if(gameGrid->getCell(i-1, j-1).toString() == "X"){
+        if(gameGrid->getCell(i-1, j-1).getState() == true){
           neighbor++;
         }
-        if(gameGrid->getCell(i-1, j).toString() == "X"){
+        if(gameGrid->getCell(i-1, j).getState() == true){
           neighbor++;
         }
-        if(gameGrid->getCell(i-1, j+1).toString() == "X"){
+        if(gameGrid->getCell(i-1, j+1).getState() == true){
           neighbor++;
         }
-        if(gameGrid->getCell(i, j-1).toString() == "X"){
+        if(gameGrid->getCell(i, j-1).getState() == true){
           neighbor++;
         }
-        if(gameGrid->getCell(i, j+1).toString() == "X"){
+        if(gameGrid->getCell(i, j+1).getState() == true){
           neighbor++;
         }
-        if(gameGrid->getCell(i+1, j-1).toString() == "X"){
+        if(gameGrid->getCell(i+1, j-1).getState() == true){
           neighbor++;
         }
-        if(gameGrid->getCell(i+1, j).toString() == "X"){
+        if(gameGrid->getCell(i+1, j).getState() == true){
           neighbor++;
         }
-        if(gameGrid->getCell(i+1, j+1).toString() == "X"){
+        if(gameGrid->getCell(i+1, j+1).getState() == true){
           neighbor++;
         }
 
