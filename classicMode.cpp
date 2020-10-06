@@ -217,7 +217,7 @@ void ClassicMode::runSimulation(){
         if(gameGrid->getCell(i+1, j).getState() == true){
           neighbor++;
         }
-        if(gameGrid->getCell(i+1, j-1).getState() == true){
+        if(gameGrid->getCell(i+1, j+1).getState() == true){
           neighbor++;
         }
         if(gameGrid->getCell(i, j+1).getState() == true){
