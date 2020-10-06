@@ -196,7 +196,7 @@ void ClassicMode::runSimulation(){
         if(gameGrid->getCell(i+1, j).toString() == "X"){
           neighbor++;
         }
-        if(gameGrid->getCell(i-1, j+1).toString() == "X"){
+        if(gameGrid->getCell(i+1, j-1).toString() == "X"){
           neighbor++;
         }
         if(gameGrid->getCell(i, j+1).toString() == "X"){
