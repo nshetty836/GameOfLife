@@ -266,6 +266,10 @@ void ClassicMode::runSimulation(){
   }
 }
 
+string ClassicMode::toString(){
+  return tempGrid->toString();
+}
+
 
 //checking if game grids are the same
 // bool ClassicMode::isEqual(){

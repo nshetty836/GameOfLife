@@ -23,5 +23,6 @@ class ClassicMode{
     bool isEqual();
     void runSimulation();
     void getGrid(int i, int j, int neighbor);
+    string toString();
 
 };
