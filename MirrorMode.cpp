@@ -296,7 +296,7 @@ void MirrorMode::advanceGen(){
       }
       }
 
-      /*
+
       gameGrid->clearGrid();
       for(int i = 0; i < row ; i++){
         for(int j = 0; j < column; j++){
@@ -304,7 +304,8 @@ void MirrorMode::advanceGen(){
            gameGrid->gridArray[i][j].setAlive();
         }
       }
-      */
+      tempGrid->clearGrid();
+
     }
 
     string MirrorMode::toString(){
