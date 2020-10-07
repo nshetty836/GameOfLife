@@ -22,7 +22,8 @@ class ClassicMode{
     ClassicMode(string fileName);
     ~ClassicMode();
     bool isEqual();
-    void runSimulation();
+    void advanceGen();
+    bool checkIfEqual();
     void getGrid(int i, int j, int neighbor);
     string toString();
 

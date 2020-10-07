@@ -287,8 +287,6 @@ void ClassicMode::advanceGen(){
       }
     }
   }
-  // cout << "TEST TEMP" << endl;
-  // cout << tempGrid -> toString() << endl;
 
   gameGrid->clearGrid();
   for(int i = 0; i < row ; i++){
@@ -297,9 +295,11 @@ void ClassicMode::advanceGen(){
        gameGrid->gridArray[i][j].setAlive();
     }
   }
-  // cout << "TEST" << endl;
-  // cout << gameGrid -> toString() << endl;
   tempGrid->clearGrid();
+}
+
+bool ClassicMode::checkIfEqual(){
+  return tempGrid->equals(gameGrid);
 }
 
 string ClassicMode::toString(){

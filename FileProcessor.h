@@ -6,6 +6,7 @@ public:
   FileProcessor();//default constructor
   FileProcessor(int r, int c);
   ~FileProcessor();//destructor
+  bool checkFile(string fileName);
   void readFile(string fileName);
   int rows;
   int columns;

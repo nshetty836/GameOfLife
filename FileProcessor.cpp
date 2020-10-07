@@ -16,6 +16,15 @@ FileProcessor::FileProcessor(int r, int c){
   allCells = "";
 }
 
+bool FileProcessor::checkFile(string fileName){
+  ifstream fileIn;
+  fileIn.open(fileName);
+  if (fileIn.is_open() == false)
+  {
+    
+  }
+}
+
 
 //reading file and getting height and width
 void FileProcessor::readFile(string fileName){

@@ -70,7 +70,6 @@ void Grid::randPopulate(double popDensity) {
 		else
 			i--;
 	}
-	cout << this->toString();
 }
 
 
