@@ -1,39 +1,31 @@
-#include "ClassicMode.h"
-//#include "Grid.h"
 #include <iostream>
 #include <fstream>
-
+#include "MirrorMode.h"
 using namespace std;
 
-//TO DO: change all attempts to access gameGrid like gameGrid[i][j] to
-// gameGrid.getCell(i, j)
-
-ClassicMode::ClassicMode(){
+MirrorMode::MirrorMode(){
   neighbor = 0;
   row = 5;
-  column  = 5;
+  column = 5;
   gameGrid = new Grid(row, column);
   tempGrid = new Grid(row, column);
-
 }
 
 //constructor
-ClassicMode::ClassicMode(int r, int c, Grid gameGrid){
-
+MirrorMode::MirrorMode(int r, int c, Grid gameGrid){
   row = r;
   column = c;
 
-  //FIX THIS (maybe make another overloaded constructor in Grid to copy a grid)
   tempGrid = new Grid(row, column);
   for(int i = 0; i < row ; i++){
     for(int j = 0; j < column; j++){
       if(gameGrid.getCell(i, j).toString() == "X")
        tempGrid->gridArray[i][j] = new Cell(true);
-     }
-  	}
-  }
+      }
+    }
+}
 
-ClassicMode::ClassicMode(string fileName){
+MirrorMode::MirrorMode(string fileName){
 
   gameGrid = new Grid(fileName);
   row = gameGrid->getRows();
@@ -49,15 +41,16 @@ ClassicMode::ClassicMode(string fileName){
      }
   	}
   }
+
 //destructor
-ClassicMode::~ClassicMode(){
+MirrorMode::~MirrorMode(){
   //TO DO: FIX THIS
 // delete gameGrid;
 // delete tempGrid;
 
 }
 
-void ClassicMode::getGrid(int i, int j, int nc){
+void MirrorMode::getGrid(int i, int j, int nc){
     if(nc == 3){
       tempGrid->gridArray[i][j].setAlive();
     }
@@ -85,55 +78,63 @@ void ClassicMode::getGrid(int i, int j, int nc){
     // cout << tempGrid->toString() << endl;
 }
 
-void ClassicMode::advanceGen(){
-
+void MirrorMode::advanceGen(){
   for(int i = 0; i < row; i++){
     for(int j = 0; j < column; j++){
       neighbor = 0;
 
-    // CORNER CELL
+      //CORNER CELL
       if((i == 0) && (j == 0)){
-        if(gameGrid->getCell(i, j+1).getState() == true){
-            neighbor++;
-          }
+          if(gameGrid->getCell(i,j).getState() == true){
+            neighbor+= 3;
+        }
+          if(gameGrid->getCell(i, j+1).getState() == true){
+            neighbor+= 2;
+        }
           if(gameGrid->getCell(i+1,j).getState() == true){
-            neighbor++;
-          }
+            neighbor+=2;
+        }
           if(gameGrid->getCell(i+1,j+1).getState() == true){
             neighbor++;
-          }
-
-
-          // NEW CELL >> tempGrid
-          getGrid(i, j, neighbor);
-          neighbor = 0;
         }
 
-      else if((i == 0) && (j == (column - 1))){
-        if(gameGrid->getCell(i, j+1).getState() == true){
-            neighbor++;
-          }
-          if(gameGrid->getCell(i+1,j).getState() == true){
-            neighbor++;
-          }
-          if(gameGrid->getCell(i+1,j-1).getState() == true){
-            neighbor++;
-          }
         // NEW CELL >> tempGrid
         getGrid(i, j, neighbor);
         neighbor = 0;
       }
 
+      //CORNER CELL
+      else if((i == 0) && (j == (column - 1))){
+          if(gameGrid->getCell(i, j).getState() == true){
+            neighbor+= 3;
+        }
+          if(gameGrid->getCell(i, j-1).getState() == true){
+            neighbor+= 2;
+        }
+          if(gameGrid->getCell(i+1,j-1).getState() == true){
+            neighbor+= 2;
+        }
+          if(gameGrid->getCell(i+1,j).getState() == true){
+            neighbor++;
+        }
+        // NEW CELL >> tempGrid
+        getGrid(i, j, neighbor);
+        neighbor = 0;
+      }
+      // CORNER CELL
       else if((i == (row - 1)) && (j == (column - 1))){
-        if(gameGrid->getCell(i, j-1).getState() == true){
-            neighbor++;
-          }
+          if(gameGrid->getCell(i, j).getState() == true){
+            neighbor+= 3;
+        }
+          if(gameGrid->getCell(i, j-1).getState() == true){
+            neighbor+= 2;
+        }
           if(gameGrid->getCell(i-1,j).getState() == true){
-            neighbor++;
-          }
+            neighbor+= 2;
+        }
           if(gameGrid->getCell(i-1,j-1).getState() == true){
             neighbor++;
-          }
+        }
 
         // NEW CELL >> tempGrid
         getGrid(i, j, neighbor);
@@ -141,95 +142,109 @@ void ClassicMode::advanceGen(){
 
       }
       // CORNER CELL
-        else if((i == (row - 1)) && (j == 0)){
+      else if((i == (row - 1)) && (j == 0)){
+          if(gameGrid->getCell(i, j).getState() == true){
+            neighbor+= 3;
+        }
           if(gameGrid->getCell(i, j+1).getState() == true){
-              neighbor++;
-            }
-            if(gameGrid->getCell(i-1,j).getState() == true){
-
-              neighbor++;
-            }
-            if(gameGrid->getCell(i-1,j+1).getState() == true){
-              neighbor++;
-            }
+            neighbor+=2;
+        }
+          if(gameGrid->getCell(i-1,j).getState() == true){
+            neighbor+=2;
+        }
+          if(gameGrid->getCell(i-1,j+1).getState() == true){
+            neighbor++;
+        }
 
         // NEW CELL >> tempGrid
         getGrid(i, j, neighbor);
         neighbor = 0;
-      }
 
+      }
+      // UPPER COLUMN
       else if((!(i == 0) || (!(i == (row - 2)))) && (j == 0)){
-        if(gameGrid->getCell(i-1, j).getState() == true){
-          neighbor++;
+          if(gameGrid->getCell(i, j).getState() == true){
+            neighbor++;
         }
-        if(gameGrid->getCell(i-1, j+1).getState() == true){
-          neighbor++;
+          if(gameGrid->getCell(i-1, j).getState() == true){
+            neighbor+= 2;
         }
-        if(gameGrid->getCell(i, j+1).getState() == true){
-          neighbor++;
+          if(gameGrid->getCell(i-1, j+1).getState() == true){
+            neighbor++;
         }
-        if(gameGrid->getCell(i+1, j+1).getState() == true){
-          neighbor++;
+          if(gameGrid->getCell(i, j+1).getState() == true){
+            neighbor++;
         }
-        if(gameGrid->getCell(i+1, j).getState() == true){
-          neighbor++;
+          if(gameGrid->getCell(i+1, j+1).getState() == true){
+            neighbor++;
+        }
+          if(gameGrid->getCell(i+1, j).getState() == true){
+            neighbor+= 2;
         }
 
         // NEW CELL >> tempGrid
         getGrid(i, j, neighbor);
         neighbor = 0;
-      }
 
+      }
       // LOWER COLUMN
       else if((0 < i <= (row - 2)) && (j == (column - 1))){
-        if(gameGrid->getCell(i-1, j).getState() == true){
-          neighbor++;
+          if(gameGrid->getCell(i, j).getState() == true){
+            neighbor++;
         }
-        if(gameGrid->getCell(i-1, j-1).getState() == true){
-          neighbor++;
+          if(gameGrid->getCell(i-1, j).getState() == true){
+            neighbor+= 2;
         }
-        if(gameGrid->getCell(i, j-1).getState() == true){
-          neighbor++;
+          if(gameGrid->getCell(i-1, j-1).getState() == true){
+            neighbor++;
         }
-        if(gameGrid->getCell(i+1, j-1).getState() == true){
-          neighbor++;
+          if(gameGrid->getCell(i, j-1).getState() == true){
+            neighbor++;
         }
-        if(gameGrid->getCell(i+1, j).getState() == true){
-          neighbor++;
+          if(gameGrid->getCell(i+1, j-1).getState() == true){
+            neighbor++;
+        }
+          if(gameGrid->getCell(i+1, j).getState() == true){
+            neighbor+= 2;
+        }
+        // NEW CELL >> tempGrid
+        getGrid(i, j, neighbor);
+        neighbor = 0;
+
+      }
+        // UPPER ROW
+        else if((i == 0) && (0 < j <= (column - 2))){
+          if(gameGrid->getCell(i, j).getState() == true){
+            neighbor++;
+        }
+          if(gameGrid->getCell(i, j-1).getState() == true){
+            neighbor+= 2;
+        }
+          if(gameGrid->getCell(i+1, j-1).getState() == true){
+            neighbor++;
+        }
+          if(gameGrid->getCell(i+1, j).getState() == true){
+            neighbor++;
+        }
+          if(gameGrid->getCell(i+1, j+1).getState() == true){
+            neighbor++;
+        }
+          if(gameGrid->getCell(i, j+1).getState() == true){
+            neighbor += 2;
         }
 
         // NEW CELL >> tempGrid
         getGrid(i, j, neighbor);
         neighbor = 0;
+
       }
-
-      // UPPER ROW
-      else if((i == 0) && (0 < j && j <= (column - 2))){
-        if(gameGrid->getCell(i, j-1).getState() == true){
-          neighbor++;
-        }
-        if(gameGrid->getCell(i+1, j-1).getState() == true){
-          neighbor++;
-        }
-        if(gameGrid->getCell(i+1, j).getState() == true){
-          neighbor++;
-        }
-        if(gameGrid->getCell(i+1, j+1).getState() == true){
-          neighbor++;
-        }
-        if(gameGrid->getCell(i, j+1).getState() == true){
-          neighbor++;
-        }
-
-        // NEW CELL >> tempGrid
-        getGrid(i, j, neighbor);
-        neighbor = 0;
-      }
-
       // LOWER ROW
-      else if((i == (row - 1)) && (0 < j && j <= (column - 2))){
-        if(gameGrid->getCell(i, j-1).getState() == true){
+      else if((i == (row - 1)) && (0 < j <= (column - 2))){
+        if(gameGrid->getCell(i, j).getState() == true){
           neighbor++;
+        }
+        if(gameGrid->getCell(i, j-1).getState() == true){
+          neighbor += 2;
         }
         if(gameGrid->getCell(i-1, j-1).getState() == true){
           neighbor++;
@@ -241,14 +256,12 @@ void ClassicMode::advanceGen(){
           neighbor++;
         }
         if(gameGrid->getCell(i, j+1).getState() == true){
-          neighbor++;
+          neighbor+= 2;
         }
-
-
         // NEW CELL >> tempGrid
         getGrid(i, j, neighbor);
         neighbor = 0;
-      }
+        }
 
       // MIDDLE CELLS
       else{
@@ -276,33 +289,27 @@ void ClassicMode::advanceGen(){
         if(gameGrid->getCell(i+1, j+1).getState() == true){
           neighbor++;
         }
-
+      }
         // NEW CELL >> tempGrid
         getGrid(i, j, neighbor);
         neighbor = 0;
-
       }
+      }
+
+      /*
+      gameGrid->clearGrid();
+      for(int i = 0; i < row ; i++){
+        for(int j = 0; j < column; j++){
+          if(tempGrid->getCell(i, j).getState() == true)
+           gameGrid->gridArray[i][j].setAlive();
+        }
+      }
+      */
     }
-  }
-  // cout << "TEST TEMP" << endl;
-  // cout << tempGrid -> toString() << endl;
 
-  gameGrid->clearGrid();
-  for(int i = 0; i < row ; i++){
-    for(int j = 0; j < column; j++){
-      if(tempGrid->getCell(i, j).getState() == true)
-       gameGrid->gridArray[i][j].setAlive();
+    string MirrorMode::toString(){
+      return gameGrid->toString();
     }
-  }
-  // cout << "TEST" << endl;
-  // cout << gameGrid -> toString() << endl;
-  tempGrid->clearGrid();
-}
-
-string ClassicMode::toString(){
-  return gameGrid->toString();
-}
-
 
 //checking if game grids are the same
 // bool ClassicMode::isEqual(){
@@ -314,5 +321,4 @@ string ClassicMode::toString(){
 //       }
 //     }
 //   return true;
-// }
 // }

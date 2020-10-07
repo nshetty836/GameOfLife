@@ -1,11 +1,9 @@
 #include <iostream>
 #include "Grid.h"
-
 using namespace std;
 
-class ClassicMode{
+class MirrorMode{
 
-  //member variables
   private:
     int neighbor;
     int row;
@@ -14,16 +12,13 @@ class ClassicMode{
     Grid *gameGrid;
     Grid *tempGrid;
 
-
-  //methods
   public:
-    ClassicMode();
-    ClassicMode(int row, int column, Grid gameGrid);
-    ClassicMode(string fileName);
-    ~ClassicMode();
-    bool isEqual();
+    MirrorMode();
+    MirrorMode(int row, int column, Grid gameGrid);
+    MirrorMode(string fileName);
+    ~MirrorMode();
     void advanceGen();
     void getGrid(int i, int j, int neighbor);
     string toString();
-
+    bool isEqual();
 };
