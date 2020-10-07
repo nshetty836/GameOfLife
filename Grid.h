@@ -23,12 +23,8 @@ class Grid{
     bool equals(Grid *g);
     void clearGrid();
 
-
-
-
   private:
     int rows;
 		int columns;
-
 
 };
