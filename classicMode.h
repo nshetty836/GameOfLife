@@ -1,19 +1,10 @@
 #include <iostream>
-#include "Grid.h"
-
+// #ifndef GAME_MODES_H
+// #define GAME_MODES_H
+#include "GameModes.h"
 using namespace std;
 
-class ClassicMode{
-
-  //member variables
-  private:
-    int neighbor;
-    int row;
-    int column;
-
-    Grid *gameGrid;
-    Grid *tempGrid;
-
+class ClassicMode : public GameModes{
 
   //methods
   public:
@@ -28,3 +19,4 @@ class ClassicMode{
     string toString();
 
 };
+// #endif

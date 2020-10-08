@@ -1,4 +1,6 @@
 #include <iostream>
+#ifndef GRID_H
+#define GRID_H
 #include "Cell.h"
 using namespace std;
 
@@ -6,13 +8,14 @@ class Grid{
 
   public:
     Grid();
-  	Grid(int width, int height);
+    Grid(int r, int c);
+  	Grid(int r, int c, double popDensity);
     Grid(string fileInput);
   	~Grid();
     Cell** gridArray;
 
 
-	  void randPopulate(double popDensity);  //makes random grid
+
     int genRandNum(int low, int high);
     int getRows();
     int getColumns();
@@ -28,3 +31,4 @@ class Grid{
 		int columns;
 
 };
+#endif

@@ -1,52 +1,48 @@
 #include <iostream>
 #include <fstream>
-
-// #include "Grid.h"
-//#include "ClassicMode.h"
+#include "ClassicMode.h"
+// #include "DoughnutMode.h"
 #include "MirrorMode.h"
 
 using namespace std;
 int main(int argc, char** argv){
-  //FileReader *fr = new FileReader();
-  string fileName;
 
-  //TODO: ask user if they want a random game or input a file
-  // cout << "Enter file name: ";
-  // cin >> fileName;
-  // fr->readFile(fileName);
-  // fr->readFile(fileName);
-  // fr->readFile(fileName);
-  // Grid *g1 = new Grid("cellinput.txt");
-  //ClassicMode *cm = new ClassicMode("cellinput.txt");
-  MirrorMode *mm = new MirrorMode("cellinput.txt");
-  // Grid *g2 = new Grid(7,7);
-
-  // g1 -> randPopulate(.25);
-  // g2 -> randPopulate(.5);
-  // cout << boolalpha << g1 -> equals(g2) << endl;
-
-/*
-  cm -> advanceGen();
-  cout << cm -> toString() << endl;
-  cm -> advanceGen();
-  cout << cm -> toString() << endl;
-
-  cm -> advanceGen();
-  cout << cm -> toString() << endl;
-*/
-  mm -> advanceGen();
-  cout << mm -> toString() << endl;
-
-  mm -> advanceGen();
-  cout << mm -> toString() << endl;
-
-  mm -> advanceGen();
-  cout << mm -> toString() << endl;
+    MirrorMode *mm = new MirrorMode("cellinput.txt");
+    ClassicMode *cm = new ClassicMode("cellinput.txt");
 
 
-  // cout << g2 -> toString() << endl;
+    cout << "Gen 1" << endl;
+    cout << mm -> toString() << endl;
 
+    mm -> advanceGen();
 
-  // delete g1;
-  // delete g2;
+    cout << "Gen 2" << endl;
+    cout << mm -> toString() << endl;
+    mm -> advanceGen();
+    cout << "Gen 3" << endl;
+
+    cout << mm -> toString() << endl;
+
+    cout << "Gen 4" << endl;
+
+    mm -> advanceGen();
+    cout << mm -> toString() << endl;
+
+    cout << "Gen 1" << endl;
+    cout << cm -> toString() << endl;
+
+    cm -> advanceGen();
+
+    cout << "Gen 2" << endl;
+    cout << cm -> toString() << endl;
+    cm -> advanceGen();
+    cout << "Gen 3" << endl;
+
+    cout << cm -> toString() << endl;
+
+    cout << "Gen 4" << endl;
+
+    cm -> advanceGen();
+    cout << cm -> toString() << endl;
+
 }

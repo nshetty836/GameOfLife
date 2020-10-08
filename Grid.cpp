@@ -21,6 +21,25 @@ Grid::Grid(int r, int c){
       gridArray[i] = new Cell[columns];
 }
 
+Grid::Grid(int r, int c, double popDensity){
+	rows = r;
+	columns = c;
+	gridArray = new Cell*[rows];
+  for(int i = 0; i < rows; i++)
+      gridArray[i] = new Cell[columns];
+
+	int numAlive = round(popDensity * rows * columns);
+	cout << numAlive << endl; 	//TEST
+	for(int i = 0; i < numAlive; i++){
+		int num1 = genRandNum(0,rows-1);
+		int num2 = genRandNum(0,columns-1);
+		if(gridArray[num1][num2].getState() == false)
+			gridArray[num1][num2].setAlive();
+		else
+			i--;
+	}
+}
+
 Grid::Grid(string fileInput){
 	FileProcessor *fr = new FileProcessor();
 	fr->readFile(fileInput);
@@ -58,19 +77,6 @@ int Grid::genRandNum(int low, int high){
 	return (rand() % (high - low + 1)) + low;
 }
 
-//makes random cell grid given a population density
-void Grid::randPopulate(double popDensity) {
-	int numAlive = round(popDensity * rows * columns);
-	cout << numAlive << endl; 	//TEST
-	for(int i = 0; i < numAlive; i++){
-		int num1 = genRandNum(0,rows-1);
-		int num2 = genRandNum(0,columns-1);
-		if(gridArray[num1][num2].getState() == false)
-			gridArray[num1][num2].setAlive();
-		else
-			i--;
-	}
-}
 
 
 int Grid::getRows(){

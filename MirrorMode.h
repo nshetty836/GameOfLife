@@ -1,16 +1,7 @@
-#include <iostream>
-#include "Grid.h"
+#include "GameModes.h"
 using namespace std;
 
-class MirrorMode{
-
-  private:
-    int neighbor;
-    int row;
-    int column;
-
-    Grid *gameGrid;
-    Grid *tempGrid;
+class MirrorMode : public GameModes{
 
   public:
     MirrorMode();

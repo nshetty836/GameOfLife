@@ -1,12 +1,9 @@
 #include "ClassicMode.h"
-//#include "Grid.h"
 #include <iostream>
 #include <fstream>
 
 using namespace std;
 
-//TO DO: change all attempts to access gameGrid like gameGrid[i][j] to
-// gameGrid.getCell(i, j)
 
 ClassicMode::ClassicMode(){
   neighbor = 0;

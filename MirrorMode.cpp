@@ -1,9 +1,10 @@
 #include <iostream>
 #include <fstream>
 #include "MirrorMode.h"
+#include "GameModes.h"
 using namespace std;
 
-MirrorMode::MirrorMode(){
+MirrorMode::MirrorMode(): GameModes(){
   neighbor = 0;
   row = 5;
   column = 5;
@@ -12,7 +13,7 @@ MirrorMode::MirrorMode(){
 }
 
 //constructor
-MirrorMode::MirrorMode(int r, int c, Grid gameGrid){
+MirrorMode::MirrorMode(int r, int c, Grid gameGrid) : GameModes(){
   row = r;
   column = c;
 
@@ -25,7 +26,7 @@ MirrorMode::MirrorMode(int r, int c, Grid gameGrid){
     }
 }
 
-MirrorMode::MirrorMode(string fileName){
+MirrorMode::MirrorMode(string fileName): GameModes(){
 
   gameGrid = new Grid(fileName);
   row = gameGrid->getRows();
