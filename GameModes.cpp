@@ -70,7 +70,7 @@ void GameModes::playGame(int outChoice){ //automatic pauses or use keys to see e
     advanceGen();
     gameGrid->printGrid();
     if(outChoice == 1){
-      sleep(2);    //waits for 2 seconds before printing next
+      sleep(1);    //waits for 1 second before printing next
     }
     else
       cin.get(); //user presses enter before continuing

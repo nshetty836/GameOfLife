@@ -63,7 +63,7 @@ int main(int argc, char** argv){
           continue;
         }
 
-        cout << "Modes: \n1) Classic Mode \n2)Mirror Mode \n3) Donut Mode" << endl;
+        cout << "Modes: \n1) Classic Mode \n2) Mirror Mode \n3) Donut Mode" << endl;
         cout << "Enter the number of the mode you would like to play (1, 2, or 3): ";
         cin >> mode;
 

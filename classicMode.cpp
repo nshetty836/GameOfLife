@@ -1,7 +1,4 @@
 #include "ClassicMode.h"
-#include "FileProcessor.h"
-#include <iostream>
-#include <fstream>
 using namespace std;
 
 
@@ -218,76 +215,11 @@ void ClassicMode::advanceGen(){
   }
 }
 
-// void ClassicMode::playGame(int outChoice){ //automatic pauses or use keys to see each board
-//   int genCount = 1;
-//   int repeatCount = 0;
-//   do{
-//     cout << "Generation " << genCount << endl;
-//     advanceGen();
-//     gameGrid->printGrid();
-//     if(outChoice == 1){
-//       sleep(2);    //waits for 2 seconds before printing next
-//     }
-//     else
-//       cin.get(); //user presses enter before continuing
-//
-//     if(gameGrid->equals(tempGrid) || tempGrid->isEmpty())
-//       break;
-//
-//     if(tempGrid->equals(prevGrid)){
-//       repeatCount++;
-//     }
-//     else if(repeatCount > 0){
-//       repeatCount = 0;
-//     }
-//
-//     fixGrids();
-//
-//     genCount++;
-//   }while(repeatCount < 2 && genCount <= 5001);
+
+// bool ClassicMode::checkIfEqual(){
+//   return tempGrid->equals(gameGrid);
 // }
 //
-// void ClassicMode::playGame(string fileOutName, int maxGens){
-//   int genCount = 1;
-//   int repeatCount = 0;
-//   do{
-//     advanceGen();
-//     gameGrid->printToFile(fileOutName, genCount);
-//     if(gameGrid->equals(tempGrid) || tempGrid->isEmpty())
-//       break;
-//
-//     if(tempGrid->equals(prevGrid)){
-//       repeatCount++;
-//     }
-//     else if(repeatCount > 0){
-//       repeatCount = 0;
-//     }
-//
-//     fixGrids();
-//
-//     genCount++;
-//   }while(repeatCount < 2 && genCount <= maxGens);
-//
-// }
-
-bool ClassicMode::checkIfEqual(){
-  return tempGrid->equals(gameGrid);
-}
-
-string ClassicMode::toString(){
-  return gameGrid->toString();
-}
-
-
-//checking if game grids are the same
-// bool ClassicMode::isEqual(){
-//   for(int i = 0; i < row; i++){
-//     for(int j = 0; j < column; j++){
-//         if (gameGrid[i][j] != tempGrid[i][j]){
-//             return false;
-//         }
-//       }
-//     }
-//   return true;
-// }
+// string ClassicMode::toString(){
+//   return gameGrid->toString();
 // }
