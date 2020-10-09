@@ -21,8 +21,9 @@ bool FileProcessor::checkFile(string fileName){
   fileIn.open(fileName);
   if (fileIn.is_open() == false)
   {
-    
+    return false;
   }
+  return true;
 }
 
 
@@ -43,4 +44,22 @@ void FileProcessor::readFile(string fileName){
 
   fileIn.close();
 
+}
+
+void FileProcessor::writeFile(string outFileName, string output){
+    // open file
+    ofstream fout;
+
+    // override whatever content is in this
+    fout.open(outFileName, ios_base::app);
+
+    fout << output << endl;
+
+    fout.close();
+}
+
+void FileProcessor::clearFile(string outFileName){
+  ofstream fout;
+  fout.open(outFileName);
+  fout.close();
 }

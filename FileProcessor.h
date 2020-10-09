@@ -8,6 +8,8 @@ public:
   ~FileProcessor();//destructor
   bool checkFile(string fileName);
   void readFile(string fileName);
+  void writeFile(string outFileName, string output);
+  void clearFile(string outFileName);
   int rows;
   int columns;
 

@@ -29,7 +29,6 @@ Grid::Grid(int r, int c, double popDensity){
       gridArray[i] = new Cell[columns];
 
 	int numAlive = round(popDensity * rows * columns);
-	cout << numAlive << endl; 	//TEST
 	for(int i = 0; i < numAlive; i++){
 		int num1 = genRandNum(0,rows-1);
 		int num2 = genRandNum(0,columns-1);
@@ -116,6 +115,14 @@ Cell* Grid::getNeighbors(int row, int col){
 
 }
 
+void Grid::setGrid(Grid *g){
+	for(int i = 0; i < rows; i++){
+    for(int j = 0; j < columns; j++){
+      gridArray[i][j].setState(g->getCell(i, j).getState());
+    }
+  }
+}
+
 void Grid::clearGrid(){
 	for(int i = 0; i < rows ; i++){
 		for(int j = 0; j < columns; j++){
@@ -131,6 +138,29 @@ string Grid::toString(){
        ret += gridArray[i][j].toString() + " ";
 		}
 		ret += "\n";
+	}
+	return ret;
+}
+
+void Grid::printGrid(){
+	cout << this->toString() << endl;
+}
+
+void Grid::printToFile(string outFileName, int gen){
+	FileProcessor *fr = new FileProcessor();
+	if(gen ==1){
+		fr->clearFile(outFileName);
+	}
+	fr->writeFile(outFileName, "Generation " + to_string(gen) + ":\n" + this->toString());
+}
+
+bool Grid::isEmpty(){
+	bool ret = true;
+	for(int i = 0; i < rows ; i++){
+		for(int j = 0; j < columns; j++){
+			if(gridArray[i][j].getState() == true)
+				ret = false;
+		}
 	}
 	return ret;
 }

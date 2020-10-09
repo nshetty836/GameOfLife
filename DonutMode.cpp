@@ -2,80 +2,19 @@
 #include <iostream>
 #include <fstream>
 
+
 using namespace std;
 
 //default constructor
-DonutMode::DonutMode(){
-  neighbor = 0;
-  row = 5;
-  column  = 5;
-  gameGrid = new Grid(row, column);
-  tempGrid = new Grid(row, column);
-}
+DonutMode::DonutMode(){}
 
 //constructor
-DonutMode::DonutMode(int r, int c, Grid gameGrid){
+DonutMode::DonutMode(int r, int c, double popDensity): super(r, c, popDensity){}
 
-  row = r;
-  column = c;
-
-  //FIX THIS (maybe make another overloaded constructor in Grid to copy a grid)
-  tempGrid = new Grid(row, column);
-  for(int i = 0; i < row ; i++){
-    for(int j = 0; j < column; j++){
-      if(gameGrid.getCell(i, j).toString() == "X")
-       tempGrid->gridArray[i][j] = new Cell(true);
-     }
-  	}
-  }
+DonutMode::DonutMode(string fileName): super(fileName){}
 
 //destructor
-DonutMode::~DonutMode(){
-  // delete board;
-  // delete board2;
-}
-
-DonutMode::DonutMode(string fileName){
-
-  gameGrid = new Grid(fileName);
-  row = gameGrid->getRows();
-  column = gameGrid->getColumns();
-
-  //FIX THIS (maybe make another overloaded constructor in Grid to copy a grid)
-  tempGrid = new Grid(row, column);
-
-  for(int i = 0; i < row ; i++){
-    for(int j = 0; j < column; j++){
-      if(gameGrid->getCell(i, j).toString() == "X")
-       tempGrid->gridArray[i][j] = new Cell(true);
-     }
-  	}
-  }
-
-void DonutMode::getGrid(int i, int j, int nc){
-    if(nc == 3){
-      tempGrid->gridArray[i][j].setAlive();
-    }
-    //one or less neighbors = death
-    else if(nc == 0){
-      tempGrid->gridArray[i][j].setDead();
-    }
-    //one or less neighbors = death
-    else if(nc == 1){
-      tempGrid->gridArray[i][j].setDead();
-    }
-    //two neighbors = no change / stable
-    else if(nc == 2){
-      tempGrid->gridArray[i][j] = gameGrid->getCell(i,j);
-    }
-    // 4+ neighbors = death
-    else if(nc == 4){
-      tempGrid->gridArray[i][j].setDead();
-    }
-    else{
-      tempGrid->gridArray[i][j].setDead();
-    }
-}
+DonutMode::~DonutMode(){}
 
 //Making the new board, logic of the game
 void DonutMode::advanceGen(){
@@ -367,35 +306,9 @@ void DonutMode::advanceGen(){
       }
     }
   }
-
-  gameGrid->clearGrid();
-  for(int i = 0; i < row ; i++){
-    for(int j = 0; j < column; j++){
-      if(tempGrid->getCell(i, j).getState() == true)
-       gameGrid->gridArray[i][j].setAlive();
-    }
-  }
-  tempGrid->clearGrid();
 }
 
-
-// bool DonutMode::checkIfEqual(){
-//   return tempGrid->equals(gameGrid);
-// }
 
 string DonutMode::toString(){
   return gameGrid->toString();
 }
-
-
-//checking if game grids are the same
-// bool ClassicMode::isEqual(){
-//   for(int i = 0; i < row; i++){
-//     for(int j = 0; j < column; j++){
-//         if (gameGrid[i][j] != tempGrid[i][j]){
-//             return false;
-//         }
-//       }
-//     }
-//   return true;
-// }

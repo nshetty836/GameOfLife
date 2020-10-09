@@ -5,6 +5,7 @@ class Cell{
 		Cell();
 		Cell(bool alive);
 		~Cell();
+		void setState(bool alive);
 		bool getState();
 		void setDead();
 		void setAlive();

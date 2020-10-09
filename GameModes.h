@@ -15,12 +15,21 @@ protected:
 
     Grid *gameGrid;
     Grid *tempGrid;
+    Grid *prevGrid;
 
 
   //methods
   public:
     GameModes();
+    GameModes(int rows, int columns, double popDensity);
+    GameModes(string fileName);
     ~GameModes();
+    void playGame(int outChoice);
+    void playGame(string fileOutName, int maxGens);
+    void fixGrids();
+    void getGrid(int i, int j, int nc);
+    virtual void advanceGen();
+
 
 
 };

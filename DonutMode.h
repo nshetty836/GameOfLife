@@ -1,24 +1,17 @@
 #include <iostream>
-#include "Grid.h"
+#include "GameModes.h"
 using namespace std;
 
-class DonutMode{
-
-  private:
-    int neighbor;
-    int row;
-    int column;
-
-    Grid *gameGrid;
-    Grid *tempGrid;
+class DonutMode : public GameModes{
 
   public:
     DonutMode();
-    DonutMode(int row, int column, Grid gameGrid);
+    DonutMode(int row, int column, double popDensity);
     DonutMode(string fileName);
     ~DonutMode();
     void advanceGen();
-    void getGrid(int i, int j, int neighbor);
     string toString();
     bool isEqual();
+    typedef GameModes super; //Initialized super to call from inherited class GameModes
+
 };

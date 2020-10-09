@@ -5,11 +5,10 @@ class MirrorMode : public GameModes{
 
   public:
     MirrorMode();
-    MirrorMode(int row, int column, Grid gameGrid);
+    MirrorMode(int row, int column, double popDensity);
     MirrorMode(string fileName);
     ~MirrorMode();
     void advanceGen();
-    void getGrid(int i, int j, int neighbor);
     string toString();
-    bool isEqual();
+    typedef GameModes super; //Initialized super to call from inherited class GameModes
 };

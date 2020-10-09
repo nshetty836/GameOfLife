@@ -1,86 +1,21 @@
 #include "ClassicMode.h"
+#include "FileProcessor.h"
 #include <iostream>
 #include <fstream>
-
 using namespace std;
 
 
-ClassicMode::ClassicMode(){
-  neighbor = 0;
-  row = 5;
-  column  = 5;
-  gameGrid = new Grid(row, column);
-  tempGrid = new Grid(row, column);
+ClassicMode::ClassicMode(){}
 
-}
+//overloaded constructor for random population
+ClassicMode::ClassicMode(int r, int c, double popDensity): super(r, c, popDensity){}
 
-//constructor
-ClassicMode::ClassicMode(int r, int c, Grid gameGrid){
+//overloaded constructor for file population
+ClassicMode::ClassicMode(string fileName): super(fileName){}
 
-  row = r;
-  column = c;
-
-  //FIX THIS (maybe make another overloaded constructor in Grid to copy a grid)
-  tempGrid = new Grid(row, column);
-  for(int i = 0; i < row ; i++){
-    for(int j = 0; j < column; j++){
-      if(gameGrid.getCell(i, j).toString() == "X")
-       tempGrid->gridArray[i][j] = new Cell(true);
-     }
-  	}
-  }
-
-ClassicMode::ClassicMode(string fileName){
-
-  gameGrid = new Grid(fileName);
-  row = gameGrid->getRows();
-  column = gameGrid->getColumns();
-
-  //FIX THIS (maybe make another overloaded constructor in Grid to copy a grid)
-  tempGrid = new Grid(row, column);
-
-  for(int i = 0; i < row ; i++){
-    for(int j = 0; j < column; j++){
-      if(gameGrid->getCell(i, j).toString() == "X")
-       tempGrid->gridArray[i][j] = new Cell(true);
-     }
-  	}
-  }
 //destructor
-ClassicMode::~ClassicMode(){
-  //TO DO: FIX THIS
-// delete gameGrid;
-// delete tempGrid;
+ClassicMode::~ClassicMode(){}
 
-}
-
-void ClassicMode::getGrid(int i, int j, int nc){
-    if(nc == 3){
-      tempGrid->gridArray[i][j].setAlive();
-    }
-    //one or less neighbors = death
-    else if(nc == 0){
-      tempGrid->gridArray[i][j].setDead();
-    }
-    //one or less neighbors = death
-    else if(nc == 1){
-      tempGrid->gridArray[i][j].setDead();
-    }
-    //two neighbors = no change / stable
-    else if(nc == 2){
-      tempGrid->gridArray[i][j] = gameGrid->getCell(i,j);
-    }
-    // 4+ neighbors = death
-    else if(nc == 4){
-      tempGrid->gridArray[i][j].setDead();
-    }
-    else{
-      tempGrid->gridArray[i][j].setDead();
-    }
-
-    // cout << "UPDATED TEMP" << endl;
-    // cout << tempGrid->toString() << endl;
-}
 
 void ClassicMode::advanceGen(){
 
@@ -102,7 +37,7 @@ void ClassicMode::advanceGen(){
 
 
           // NEW CELL >> tempGrid
-          getGrid(i, j, neighbor);
+          GameModes::getGrid(i, j, neighbor);
           neighbor = 0;
         }
 
@@ -117,7 +52,7 @@ void ClassicMode::advanceGen(){
             neighbor++;
           }
         // NEW CELL >> tempGrid
-        getGrid(i, j, neighbor);
+        GameModes::getGrid(i, j, neighbor);
         neighbor = 0;
       }
 
@@ -133,7 +68,7 @@ void ClassicMode::advanceGen(){
           }
 
         // NEW CELL >> tempGrid
-        getGrid(i, j, neighbor);
+        GameModes::getGrid(i, j, neighbor);
         neighbor = 0;
 
       }
@@ -151,7 +86,7 @@ void ClassicMode::advanceGen(){
             }
 
         // NEW CELL >> tempGrid
-        getGrid(i, j, neighbor);
+        GameModes::getGrid(i, j, neighbor);
         neighbor = 0;
       }
 
@@ -173,7 +108,7 @@ void ClassicMode::advanceGen(){
         }
 
         // NEW CELL >> tempGrid
-        getGrid(i, j, neighbor);
+        GameModes::getGrid(i, j, neighbor);
         neighbor = 0;
       }
 
@@ -196,7 +131,7 @@ void ClassicMode::advanceGen(){
         }
 
         // NEW CELL >> tempGrid
-        getGrid(i, j, neighbor);
+        GameModes::getGrid(i, j, neighbor);
         neighbor = 0;
       }
 
@@ -219,7 +154,7 @@ void ClassicMode::advanceGen(){
         }
 
         // NEW CELL >> tempGrid
-        getGrid(i, j, neighbor);
+        GameModes::getGrid(i, j, neighbor);
         neighbor = 0;
       }
 
@@ -243,7 +178,7 @@ void ClassicMode::advanceGen(){
 
 
         // NEW CELL >> tempGrid
-        getGrid(i, j, neighbor);
+        GameModes::getGrid(i, j, neighbor);
         neighbor = 0;
       }
 
@@ -275,22 +210,65 @@ void ClassicMode::advanceGen(){
         }
 
         // NEW CELL >> tempGrid
-        getGrid(i, j, neighbor);
+        GameModes::getGrid(i, j, neighbor);
         neighbor = 0;
 
       }
     }
   }
-
-  gameGrid->clearGrid();
-  for(int i = 0; i < row ; i++){
-    for(int j = 0; j < column; j++){
-      if(tempGrid->getCell(i, j).getState() == true)
-       gameGrid->gridArray[i][j].setAlive();
-    }
-  }
-  tempGrid->clearGrid();
 }
+
+// void ClassicMode::playGame(int outChoice){ //automatic pauses or use keys to see each board
+//   int genCount = 1;
+//   int repeatCount = 0;
+//   do{
+//     cout << "Generation " << genCount << endl;
+//     advanceGen();
+//     gameGrid->printGrid();
+//     if(outChoice == 1){
+//       sleep(2);    //waits for 2 seconds before printing next
+//     }
+//     else
+//       cin.get(); //user presses enter before continuing
+//
+//     if(gameGrid->equals(tempGrid) || tempGrid->isEmpty())
+//       break;
+//
+//     if(tempGrid->equals(prevGrid)){
+//       repeatCount++;
+//     }
+//     else if(repeatCount > 0){
+//       repeatCount = 0;
+//     }
+//
+//     fixGrids();
+//
+//     genCount++;
+//   }while(repeatCount < 2 && genCount <= 5001);
+// }
+//
+// void ClassicMode::playGame(string fileOutName, int maxGens){
+//   int genCount = 1;
+//   int repeatCount = 0;
+//   do{
+//     advanceGen();
+//     gameGrid->printToFile(fileOutName, genCount);
+//     if(gameGrid->equals(tempGrid) || tempGrid->isEmpty())
+//       break;
+//
+//     if(tempGrid->equals(prevGrid)){
+//       repeatCount++;
+//     }
+//     else if(repeatCount > 0){
+//       repeatCount = 0;
+//     }
+//
+//     fixGrids();
+//
+//     genCount++;
+//   }while(repeatCount < 2 && genCount <= maxGens);
+//
+// }
 
 bool ClassicMode::checkIfEqual(){
   return tempGrid->equals(gameGrid);

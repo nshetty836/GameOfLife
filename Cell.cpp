@@ -18,6 +18,10 @@ bool Cell::getState(){
 		return false;
 }
 
+void Cell::setState(bool alive){
+	isAlive = alive;
+}
+
 void Cell::setDead(){
 	isAlive = false;
 }
