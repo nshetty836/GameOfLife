@@ -18,7 +18,7 @@ int main(int argc, char** argv){
     cout << "\nWelcome to the game of life!" << endl;
     // loop for whether the user would like to play more than once
     while(playAgain){
-        cout << "\nChoose configuration type \n\t1) Random configuration \n\t2) Flat-file configuration \nChoice: ";
+        cout << "\nChoose configuration type. \n\t1) Random configuration \n\t2) Flat-file configuration \nChoice: ";
         cin >> configuration;
 
         // RANDOM CONFIGURATION - gets user input for rows, columns, and population density
