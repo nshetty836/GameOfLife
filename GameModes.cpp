@@ -89,7 +89,8 @@ void GameModes::playGame(int outChoice){ //automatic pauses or use keys to see e
     fixGrids();
 
     genCount++;
-  }while(repeatCount < 2 && genCount <= 5001);
+  }
+  while(repeatCount < 2 && genCount <= 5001);
 }
 
 void GameModes::playGame(string fileOutName, int maxGens){
