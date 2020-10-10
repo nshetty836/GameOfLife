@@ -66,6 +66,7 @@ void GameModes::advanceGen(){}
 void GameModes::playGame(int outChoice){ //automatic pauses or use keys to see each board
   int genCount = 1;
   int repeatCount = 0;
+  cin.get();
   do{
     cout << "Generation " << genCount << endl;
     advanceGen();
@@ -74,7 +75,7 @@ void GameModes::playGame(int outChoice){ //automatic pauses or use keys to see e
       sleep(1);    //waits for 1 second before printing next
     }
     else
-      cin.get(); //user presses enter before continuing
+       cin.get();//user presses enter before continuing
 
     if(gameGrid->equals(tempGrid) || tempGrid->isEmpty())
       break;
