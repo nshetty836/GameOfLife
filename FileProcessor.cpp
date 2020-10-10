@@ -4,18 +4,16 @@
 using namespace std;
 
 //constructor
-FileProcessor::FileProcessor(){
-  rows = 5;
-  columns = 5;
-  allCells = "";
-}
+FileProcessor::FileProcessor(){}
 
+//overloaded constructor-
 FileProcessor::FileProcessor(int r, int c){
   rows = r;
   columns = c;
   allCells = "";
 }
 
+//checks if file can be opened
 bool FileProcessor::checkFile(string fileName){
   ifstream fileIn;
   fileIn.open(fileName);
@@ -27,16 +25,19 @@ bool FileProcessor::checkFile(string fileName){
 }
 
 
-//reading file and getting height and width
+//reading file and getting rows, columns, and string of grid
 void FileProcessor::readFile(string fileName){
   ifstream fileIn;
   fileIn.open(fileName);
   string tempLine;
+  
+  //getting rows and columns
   if (fileIn.eof() == false){
     fileIn >> rows;
     fileIn >> columns;
   }
 
+  //adding rest of file to string
   while(fileIn.eof() == false){
     fileIn >> tempLine;
     allCells += tempLine;
@@ -46,18 +47,16 @@ void FileProcessor::readFile(string fileName){
 
 }
 
+//writing given string to file
 void FileProcessor::writeFile(string outFileName, string output){
-    // open file
     ofstream fout;
-
-    // override whatever content is in this
+    // override whatever content is in the file
     fout.open(outFileName, ios_base::app);
-
     fout << output << endl;
-
     fout.close();
 }
 
+//clear file
 void FileProcessor::clearFile(string outFileName){
   ofstream fout;
   fout.open(outFileName);

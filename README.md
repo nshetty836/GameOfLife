@@ -1,8 +1,9 @@
 # GameOfLife
 Assignment 2- CPSC 350: Data Structures
+Professor: Rene German
 
-Nikita Shetty 002350802
-Kashish Pandey 002342588
+Nikita Shetty- ID# 2350802
+Kashish Pandey- ID# 2342588
 
 Errors:
 No known errors
@@ -27,9 +28,12 @@ cellinput.txt
 Makefile
 
 
-How this program compiles:
-g++ *.cpp
-./a.out
+To compile and run:
+
+1) make
+
+2) ./assignment2.exe
+
 
 References:
 https://stackoverflow.com/questions/936687/how-do-i-declare-a-2d-array-in-c-using-new
@@ -41,3 +45,4 @@ https://www.tutorialspoint.com/cplusplus/cpp_inheritance.htm
 http://www.cplusplus.com/forum/beginner/43115/
 https://stackoverflow.com/questions/3065154/undefined-reference-to-vtable
 https://www.geeksforgeeks.org/virtual-function-cpp/#:~:text=A%20virtual%20function%20is%20a,Overriden
+https://stackoverflow.com/questions/8845117/error-expected-type-specifier-before-classname

@@ -18,6 +18,7 @@ void DonutMode::advanceGen(){
   for(int i = 0; i < row; i++){
     for(int j = 0; j < column; j++){
       neighbor = 0;
+
       // TOP LEFT CORNER CELL
       if((i == 0) && (j == 0)){
         if(gameGrid->getCell(i, j+1).getState() == true){
@@ -44,7 +45,7 @@ void DonutMode::advanceGen(){
         if(gameGrid->getCell(i + (row-1),j+1) .getState() == true){
           neighbor++;
         }
-        // NEW CELL >> tempGrid
+        // NEW CELL >> nextGrid
         getGrid(i, j, neighbor);
         neighbor = 0;
       }
@@ -75,7 +76,7 @@ void DonutMode::advanceGen(){
         if(gameGrid->getCell(i+1, 0).getState() == true){
           neighbor++;
         }
-        // NEW CELL >> tempGrid
+        // NEW CELL >> nextGrid
         getGrid(i, j, neighbor);
         neighbor = 0;
       }
@@ -105,7 +106,7 @@ void DonutMode::advanceGen(){
           if(gameGrid->getCell(i-1, 0).getState() == true){
             neighbor++;
           }
-          // NEW CELL >> tempGrid
+          // NEW CELL >> nextGrid
           getGrid(i, j, neighbor);
           neighbor = 0;
       }
@@ -135,7 +136,7 @@ void DonutMode::advanceGen(){
         if(gameGrid->getCell(i-1,j+(column-1)).getState() == true){
           neighbor++;
         }
-        // NEW CELL >> tempGrid
+        // NEW CELL >> nextGrid
         getGrid(i, j, neighbor);
         neighbor = 0;
       }
@@ -165,7 +166,7 @@ void DonutMode::advanceGen(){
         if(gameGrid->getCell(i+1, j+(column-1)).getState() == true){
           neighbor++;
         }
-        // NEW CELL >> tempGrid
+        // NEW CELL >> nextGrid
         getGrid(i, j, neighbor);
         neighbor = 0;
       }
@@ -195,7 +196,7 @@ void DonutMode::advanceGen(){
         if(gameGrid->getCell(i+1, 0).getState() == true){
           neighbor++;
         }
-        // NEW CELL >> tempGrid
+        // NEW CELL >> nextGrid
         getGrid(i, j, neighbor);
         neighbor = 0;
       }
@@ -225,7 +226,7 @@ void DonutMode::advanceGen(){
         if(gameGrid->getCell(i+(row - 1), j+1).getState() == true){
           neighbor++;
         }
-        // NEW CELL >> tempGrid
+        // NEW CELL >> nextGrid
         getGrid(i, j, neighbor);
         neighbor = 0;
       }
@@ -256,7 +257,7 @@ void DonutMode::advanceGen(){
         if(gameGrid->getCell(0, j+1).getState() == true){
           neighbor++;
         }
-        // NEW CELL >> tempGrid
+        // NEW CELL >> nextGrid
         getGrid(i, j, neighbor);
         neighbor = 0;
       }
@@ -289,7 +290,7 @@ void DonutMode::advanceGen(){
         if(gameGrid->getCell(i+1, j+1).getState() == true){
           neighbor++;
         }
-        // NEW CELL >> tempGrid
+        // NEW CELL >> nextGrid
         getGrid(i, j, neighbor);
         neighbor = 0;
       }

@@ -6,14 +6,14 @@ using namespace std;
 
 class GameModes{
 
-  //member variables
+//member variables to be used in different modes
 protected:
     int neighbor;
     int row;
     int column;
 
     Grid *gameGrid;
-    Grid *tempGrid;
+    Grid *nextGrid;
     Grid *prevGrid;
 
 
@@ -28,8 +28,6 @@ protected:
     void fixGrids();
     void getGrid(int i, int j, int nc);
     virtual void advanceGen();
-
-
 
 };
 #endif
