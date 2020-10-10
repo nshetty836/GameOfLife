@@ -30,7 +30,7 @@ void FileProcessor::readFile(string fileName){
   ifstream fileIn;
   fileIn.open(fileName);
   string tempLine;
-  
+
   //getting rows and columns
   if (fileIn.eof() == false){
     fileIn >> rows;
@@ -42,9 +42,7 @@ void FileProcessor::readFile(string fileName){
     fileIn >> tempLine;
     allCells += tempLine;
   }
-
   fileIn.close();
-
 }
 
 //writing given string to file

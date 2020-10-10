@@ -6,9 +6,10 @@ using namespace std;
 //default constructor
 DonutMode::DonutMode(){}
 
-//constructor
+//overloaded constructor for random population
 DonutMode::DonutMode(int r, int c, float popDensity): super(r, c, popDensity){}
 
+//overloaded constructor for file population
 DonutMode::DonutMode(string fileName): super(fileName){}
 
 //destructor

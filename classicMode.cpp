@@ -5,6 +5,7 @@
 #include "GameModes.h"
 using namespace std;
 
+//default constructor
 ClassicMode::ClassicMode(){}
 
 //overloaded constructor for random population
@@ -21,7 +22,6 @@ void ClassicMode::advanceGen(){
   for(int i = 0; i < row; i++){
     for(int j = 0; j < column; j++){
       neighbor = 0;
-
     // TOP LEFT CORNER CELL
       if((i == 0) && (j == 0)){
         if(gameGrid->getCell(i, j+1).getState() == true){
@@ -37,7 +37,6 @@ void ClassicMode::advanceGen(){
           GameModes::getGrid(i, j, neighbor);
           neighbor = 0;
         }
-
       //TOP RIGHT CORNER
       else if((i == 0) && (j == (column - 1))){
         if(gameGrid->getCell(i, j-1).getState() == true){ //CHECK THIS
