@@ -9,6 +9,7 @@ DonutMode::DonutMode(){}
 //constructor
 DonutMode::DonutMode(int r, int c, float popDensity): super(r, c, popDensity){}
 
+//overloaded constructor for file population
 DonutMode::DonutMode(string fileName): super(fileName){}
 
 //destructor
@@ -71,7 +72,6 @@ void DonutMode::advanceGen(){
         if(gameGrid->gridArray[i][0].getState() == true){
           neighbor++;
         }
-
         if(gameGrid->gridArray[i+1][0].getState() == true){
           neighbor++;
         }
