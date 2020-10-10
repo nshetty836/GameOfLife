@@ -25,7 +25,8 @@ void Cell::setState(bool alive){
 void Cell::setDead(){
 	isAlive = false;
 }
-void Cell::setAlive(){ //took out parameter bool alive
+
+void Cell::setAlive(){
 	isAlive = true;
 }
 

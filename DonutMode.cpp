@@ -18,8 +18,7 @@ void DonutMode::advanceGen(){
   for(int i = 0; i < row; i++){
     for(int j = 0; j < column; j++){
       neighbor = 0;
-      // CORNER CELL
-      // TOP LEFT
+      // TOP LEFT CORNER CELL
       if((i == 0) && (j == 0)){
         if(gameGrid->getCell(i, j+1).getState() == true){
           neighbor++;
@@ -49,8 +48,7 @@ void DonutMode::advanceGen(){
         getGrid(i, j, neighbor);
         neighbor = 0;
       }
-      //CORNER CELL
-      // TOP RIGHT
+      //TOP RIGHT CORNER CELL
       else if((i == 0) && (j == (column - 1))){
         if(gameGrid->getCell(i, j-1).getState() == true){
           neighbor++;
@@ -81,8 +79,7 @@ void DonutMode::advanceGen(){
         getGrid(i, j, neighbor);
         neighbor = 0;
       }
-      // CORNER CELL
-      // BOTTOM RIGHT
+      // BOTTOM RIGHT CORNER CELL
       else if((i == (row - 1)) && (j == (column - 1))){
           if(gameGrid->getCell(i, j-1).getState() == true){
             neighbor++;
@@ -112,8 +109,7 @@ void DonutMode::advanceGen(){
           getGrid(i, j, neighbor);
           neighbor = 0;
       }
-      // CORNER CELL
-      // BOTTOM LEFT
+      // BOTTOM LEFT CORNER CELL
       else if((i == (row - 1)) && (j == 0)){
         if(gameGrid->getCell(i, j+1).getState() == true){
           neighbor++;
@@ -143,7 +139,6 @@ void DonutMode::advanceGen(){
         getGrid(i, j, neighbor);
         neighbor = 0;
       }
-      // UPPER COLUMN
       // FIRST COLUMN
       else if((!(i == 0) || (!(i == (row - 2)))) && (j == 0)){
         if(gameGrid->getCell(i-1, j).getState() == true){
@@ -174,7 +169,6 @@ void DonutMode::advanceGen(){
         getGrid(i, j, neighbor);
         neighbor = 0;
       }
-      // LOWER COLUMN
       // LAST COLUMN
       else if((0 < i <= (row - 2)) && (j == (column - 1))){
         if(gameGrid->getCell(i-1, j).getState() == true){
@@ -205,8 +199,7 @@ void DonutMode::advanceGen(){
         getGrid(i, j, neighbor);
         neighbor = 0;
       }
-      // UPPER ROW
-      // FIRST ROW
+      // UPPER ROW - FIRST ROW
       else if((i == 0) && (0 < j && j <= (column - 2))){
         if(gameGrid->getCell(i, j-1).getState() == true){
           neighbor++;
@@ -236,8 +229,7 @@ void DonutMode::advanceGen(){
         getGrid(i, j, neighbor);
         neighbor = 0;
       }
-      // LOWER ROW
-      // LAST ROW
+      // LOWER ROW - LAST ROW
       else if((i == (row - 1)) && (0 < j <= (column - 2))){
         if(gameGrid->getCell(i, j-1).getState() == true){
           neighbor++;

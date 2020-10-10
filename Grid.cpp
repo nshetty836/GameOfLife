@@ -103,6 +103,7 @@ void Grid::setGrid(Grid *g){
   }
 }
 
+//prints grid as a string (access w FileProcessor class)
 string Grid::toString(){
 	string ret = "";
 	for(int i = 0; i < rows; i++){

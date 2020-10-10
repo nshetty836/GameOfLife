@@ -17,7 +17,7 @@ class Grid{
     int getRows();
     int getColumns();
     Cell getCell(int row, int col);
-    string toString(); //prints grid as a string (access w FileProcessor class)
+    string toString(); 
     bool equals(Grid *g);
     void printGrid();
     void printToFile(string outFileName, int gen);

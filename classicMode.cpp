@@ -54,8 +54,7 @@ void ClassicMode::advanceGen(){
         GameModes::getGrid(i, j, neighbor);
         neighbor = 0;
       }
-      // CORNER CELL
-      // BOTTOM RIGHT
+      // BOTTOM RIGHT CORNER CELL
       else if((i == (row - 1)) && (j == (column - 1))){
         if(gameGrid->getCell(i, j-1).getState() == true){
             neighbor++;
@@ -70,8 +69,7 @@ void ClassicMode::advanceGen(){
         GameModes::getGrid(i, j, neighbor);
         neighbor = 0;
       }
-      // CORNER CELL
-      // BOTTOM LEFT
+      // BOTTOM LEFT CORNER CELL
         else if((i == (row - 1)) && (j == 0)){
           if(gameGrid->getCell(i, j+1).getState() == true){
               neighbor++;
@@ -129,8 +127,7 @@ void ClassicMode::advanceGen(){
         GameModes::getGrid(i, j, neighbor);
         neighbor = 0;
       }
-      // UPPER ROW
-      // FIRST ROW
+      //FIRST ROW - UPPER ROW
       else if((i == 0) && (0 < j && j <= (column - 2))){
         if(gameGrid->getCell(i, j-1).getState() == true){
           neighbor++;
@@ -151,8 +148,7 @@ void ClassicMode::advanceGen(){
         GameModes::getGrid(i, j, neighbor);
         neighbor = 0;
       }
-      // LOWER ROW
-      // LAST ROW
+      // LOWER ROW - LAST ROW
       else if((i == (row - 1)) && (0 < j && j <= (column - 2))){
         if(gameGrid->getCell(i, j-1).getState() == true){
           neighbor++;
