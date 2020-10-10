@@ -121,13 +121,12 @@ void MirrorMode::advanceGen(){
         if(gameGrid->getCell(i+1, j).getState() == true){
           neighbor+=2;
         }
-
         // NEW CELL >> tempGrid
         GameModes::getGrid(i, j, neighbor);
         neighbor = 0;
       }
 
-      // LAST COLUMN 
+      // LAST COLUMN
       else if((0 < i <= (row - 2)) && (j == (column - 1))){
         if(gameGrid->getCell(i, j).getState() == true){
             neighbor++;
@@ -241,12 +240,3 @@ void MirrorMode::advanceGen(){
     }
   }
 }
-
-
-// bool MirrorMode::checkIfEqual(){
-//   return tempGrid->equals(gameGrid);
-// }
-//
-// string MirrorMode::toString(){
-//   return gameGrid->toString();
-// }
