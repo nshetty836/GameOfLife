@@ -60,19 +60,20 @@ void DonutMode::advanceGen(){
         if(gameGrid->getCell(i+1,j).getState() == true){
           neighbor++;
         }
-        if(gameGrid->getCell(i + (row-1),j).getState() == true){
+        if(gameGrid->getCell(i+(row-1),j).getState() == true){
           neighbor++;
         }
-        if(gameGrid->getCell(i + (row-1),j-1).getState() == true){
+        if(gameGrid->getCell(i+(row-1),j-1).getState() == true){
           neighbor++;
         }
-        if(gameGrid->gridArray[i + (row-1)][0].getState() == true){
+        if(gameGrid->getCell(i+(row-1), 0).getState() == true){
           neighbor++;
         }
-        if(gameGrid->gridArray[i][0].getState() == true){
+        if(gameGrid->getCell(i, 0).getState() == true){
           neighbor++;
         }
-        if(gameGrid->gridArray[i+1][0].getState() == true){
+
+        if(gameGrid->getCell(i+1, 0).getState() == true){
           neighbor++;
         }
         // NEW CELL >> tempGrid
