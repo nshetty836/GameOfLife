@@ -20,6 +20,7 @@ void MirrorMode::advanceGen(){
       neighbor = 0;
 
       //CORNER CELL
+      // TOP LEFT
       if((i == 0) && (j == 0)){
           if(gameGrid->getCell(i,j).getState() == true){
             neighbor+= 3;
@@ -33,13 +34,12 @@ void MirrorMode::advanceGen(){
           if(gameGrid->getCell(i+1,j+1).getState() == true){
             neighbor++;
         }
-  
         // NEW CELL >> tempGrid
         getGrid(i, j, neighbor);
         neighbor = 0;
       }
-
       //CORNER CELL
+      // TOP RIGHT
       else if((i == 0) && (j == (column - 1))){
           if(gameGrid->getCell(i, j).getState() == true){
             neighbor+= 3;
@@ -53,13 +53,13 @@ void MirrorMode::advanceGen(){
           if(gameGrid->getCell(i+1,j).getState() == true){
             neighbor++;
         }
-
         // cout << neighbor << endl;
         // NEW CELL >> tempGrid
         getGrid(i, j, neighbor);
         neighbor = 0;
       }
       // CORNER CELL
+      // BOTTOM RIGHT
       else if((i == (row - 1)) && (j == (column - 1))){
           if(gameGrid->getCell(i, j).getState() == true){
             neighbor+= 3;
@@ -73,13 +73,12 @@ void MirrorMode::advanceGen(){
           if(gameGrid->getCell(i-1,j-1).getState() == true){
             neighbor++;
         }
-
         // NEW CELL >> tempGrid
         getGrid(i, j, neighbor);
         neighbor = 0;
-
       }
       // CORNER CELL
+      // BOTTOM LEFT
       else if((i == (row - 1)) && (j == 0)){
           if(gameGrid->getCell(i, j).getState() == true){
             neighbor+= 3;
@@ -93,13 +92,12 @@ void MirrorMode::advanceGen(){
           if(gameGrid->getCell(i-1,j+1).getState() == true){
             neighbor++;
         }
-
         // NEW CELL >> tempGrid
         getGrid(i, j, neighbor);
         neighbor = 0;
-
       }
       // UPPER COLUMN
+      // FIRST COLUMN
       else if((!(i == 0) || (!(i == (row - 2)))) && (j == 0)){
           if(gameGrid->getCell(i, j).getState() == true){
             neighbor++;
@@ -123,9 +121,9 @@ void MirrorMode::advanceGen(){
         // NEW CELL >> tempGrid
         getGrid(i, j, neighbor);
         neighbor = 0;
-
       }
       // LOWER COLUMN
+      // LAST COLUMN
       else if((0 < i <= (row - 2)) && (j == (column - 1))){
           if(gameGrid->getCell(i, j).getState() == true){
             neighbor++;
@@ -148,9 +146,9 @@ void MirrorMode::advanceGen(){
         // NEW CELL >> tempGrid
         getGrid(i, j, neighbor);
         neighbor = 0;
-
       }
         // UPPER ROW
+        // FIRST ROW
         else if((i == 0) && (0 < j && j <= (column - 2))){
           if(gameGrid->getCell(i, j).getState() == true){
             neighbor++;
@@ -174,9 +172,9 @@ void MirrorMode::advanceGen(){
         // NEW CELL >> tempGrid
         getGrid(i, j, neighbor);
         neighbor = 0;
-
       }
       // LOWER ROW
+      // LAST ROW
       else if((i == (row - 1)) && (0 < j && j <= (column - 2))){
         if(gameGrid->getCell(i, j).getState() == true){
           neighbor++;
@@ -200,8 +198,10 @@ void MirrorMode::advanceGen(){
         getGrid(i, j, neighbor);
         neighbor = 0;
         }
-
-      // MIDDLE CELLS
+      // THESE ARE THE MIDDLE CELLS
+      // REMAINING CELLS
+      // NO CORNERS
+      // NO EDGES
       else{
         if(gameGrid->getCell(i-1, j-1).getState() == true){
           neighbor++;
@@ -231,19 +231,13 @@ void MirrorMode::advanceGen(){
         // NEW CELL >> tempGrid
         getGrid(i, j, neighbor);
         neighbor = 0;
+        }
       }
-      }
-
       // cout << "GAME GRID\n" << gameGrid->toString() << endl;
-
-
     }
-
-
 string MirrorMode::toString(){
   return gameGrid->toString();
 }
-
 //checking if game grids are the same
 // bool ClassicMode::isEqual(){
 //   for(int i = 0; i < row; i++){
