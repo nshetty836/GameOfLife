@@ -38,7 +38,7 @@ int main(int argc, char** argv){
               break;
             }
             else
-              cout << "Error! Please try again. ";
+              cout << "Error! Please try again. " << endl;
           }
         }
 
@@ -59,12 +59,20 @@ int main(int argc, char** argv){
 
         //if user enters a number other than 1 or 2, ask again
         else{
-          cout << "Error! Please enter 1 or 2. " << endl;
+          cout << "\nError! Please enter 1 or 2. " << endl;
           continue;
         }
 
-      cout << "Modes: \n\t1) Classic Mode \n\t2) Mirror Mode \n\t3) Donut Mode \nChoice: ";
-      cin >> mode;
+        //getting mode chosen by user
+        while(true){
+          cout << "Modes: \n\t1) Classic Mode \n\t2) Mirror Mode \n\t3) Donut Mode \nChoice: ";
+          cin >> mode;
+          if(mode > 0 && mode <=3 ){
+            break;
+          }
+          else
+            cout << "\nError! Please enter 1, 2, or 3. " << endl;
+        }
 
       //creating an instance of the specified mode with random configuration
       if(configuration == 1){
