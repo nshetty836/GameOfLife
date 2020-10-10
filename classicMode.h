@@ -7,7 +7,7 @@ class ClassicMode : public GameModes{
   //methods
   public:
     ClassicMode();
-    ClassicMode(int r, int c, double popDensity);
+    ClassicMode(int r, int c, float popDensity);
     ClassicMode(string fileName);
     ~ClassicMode();
     bool isEqual();

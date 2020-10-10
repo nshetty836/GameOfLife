@@ -9,7 +9,7 @@ using namespace std;
 DonutMode::DonutMode(){}
 
 //constructor
-DonutMode::DonutMode(int r, int c, double popDensity): super(r, c, popDensity){}
+DonutMode::DonutMode(int r, int c, float popDensity): super(r, c, popDensity){}
 
 DonutMode::DonutMode(string fileName): super(fileName){}
 
@@ -98,19 +98,19 @@ void DonutMode::advanceGen(){
           if(gameGrid->getCell(i-1,j-1).getState() == true){
             neighbor++;
           }
-          if(gameGrid->gridArray[0][j].getState() == true){
+          if(gameGrid->getCell(0,j).getState() == true){
             neighbor++;
           }
-          if(gameGrid->gridArray[0][j-1].getState() == true){
+          if(gameGrid->getCell(0,j- 1).getState() == true){
             neighbor++;
           }
-          if(gameGrid->gridArray[0][0].getState() == true){
+          if(gameGrid->getCell(0,0).getState() == true){
             neighbor++;
           }
-          if(gameGrid->gridArray[i][0].getState() == true){
+          if(gameGrid->getCell(i,0).getState() == true){
             neighbor++;
           }
-          if(gameGrid->gridArray[i-1][0].getState() == true){
+          if(gameGrid->getCell(i-1, 0).getState() == true){
             neighbor++;
           }
 
@@ -129,13 +129,13 @@ void DonutMode::advanceGen(){
         if(gameGrid->getCell(i-1,j+1).getState() == true){
           neighbor++;
         }
-        if(gameGrid->gridArray[0][0].getState() == true){
+        if(gameGrid->getCell(0,0).getState() == true){
           neighbor++;
         }
-        if(gameGrid->gridArray[0][j+1].getState() == true){
+        if(gameGrid->getCell(0,j+1).getState() == true){
           neighbor++;
         }
-        if(gameGrid->gridArray[0][j+(column - 1)].getState() == true){
+        if(gameGrid->getCell(0,j+(column - 1)).getState() == true){
           neighbor++;
         }
         if(gameGrid->getCell(i,j+(column - 1)).getState() == true){
@@ -197,13 +197,13 @@ void DonutMode::advanceGen(){
         if(gameGrid->getCell(i+1, j).getState() == true){
           neighbor++;
         }
-        if(gameGrid->gridArray[i][0].getState() == true){
+        if(gameGrid->getCell(i, 0).getState() == true){
           neighbor++;
         }
-        if(gameGrid->gridArray[i-1][0].getState() == true){
+        if(gameGrid->getCell(i-1, 0).getState() == true){
           neighbor++;
         }
-        if(gameGrid->gridArray[i+1][0].getState() == true){
+        if(gameGrid->getCell(i+1, 0).getState() == true){
           neighbor++;
         }
 
@@ -260,13 +260,13 @@ void DonutMode::advanceGen(){
           neighbor++;
         }
 
-        if(gameGrid->gridArray[0][j].getState() == true){
+        if(gameGrid->getCell(0, j).getState() == true){
           neighbor++;
         }
-        if(gameGrid->gridArray[0][j-1].getState() == true){
+        if(gameGrid->getCell(0, j-1).getState() == true){
           neighbor++;
         }
-        if(gameGrid->gridArray[0][j+1].getState() == true){
+        if(gameGrid->getCell(0, j+1).getState() == true){
           neighbor++;
         }
         // NEW CELL >> tempGrid

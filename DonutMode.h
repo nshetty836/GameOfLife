@@ -6,7 +6,7 @@ class DonutMode : public GameModes{
 
   public:
     DonutMode();
-    DonutMode(int row, int column, double popDensity);
+    DonutMode(int row, int column, float popDensity);
     DonutMode(string fileName);
     ~DonutMode();
     void advanceGen();

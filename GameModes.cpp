@@ -1,9 +1,10 @@
 #include "GameModes.h"
+#include <iostream>
 #include <unistd.h>
 
 
 GameModes::GameModes(){}
-GameModes::GameModes(int rows, int columns, double popDensity){
+GameModes::GameModes(int rows, int columns, float popDensity){
   row = rows;
   column = columns;
 

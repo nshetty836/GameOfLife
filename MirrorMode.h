@@ -5,7 +5,7 @@ class MirrorMode : public GameModes{
 
   public:
     MirrorMode();
-    MirrorMode(int row, int column, double popDensity);
+    MirrorMode(int row, int column, float popDensity);
     MirrorMode(string fileName);
     ~MirrorMode();
     void advanceGen();

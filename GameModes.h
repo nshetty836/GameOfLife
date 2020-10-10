@@ -21,7 +21,7 @@ protected:
   //methods
   public:
     GameModes();
-    GameModes(int rows, int columns, double popDensity);
+    GameModes(int rows, int columns, float popDensity);
     GameModes(string fileName);
     ~GameModes();
     void playGame(int outChoice);

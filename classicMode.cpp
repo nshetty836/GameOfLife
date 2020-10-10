@@ -5,7 +5,7 @@ using namespace std;
 ClassicMode::ClassicMode(){}
 
 //overloaded constructor for random population
-ClassicMode::ClassicMode(int r, int c, double popDensity): super(r, c, popDensity){}
+ClassicMode::ClassicMode(int r, int c, float popDensity): super(r, c, popDensity){}
 
 //overloaded constructor for file population
 ClassicMode::ClassicMode(string fileName): super(fileName){}
@@ -20,7 +20,7 @@ void ClassicMode::advanceGen(){
     for(int j = 0; j < column; j++){
       neighbor = 0;
 
-    // CORNER CELL
+    // TOP LEFT CORNER CELL
       if((i == 0) && (j == 0)){
         if(gameGrid->getCell(i, j+1).getState() == true){
             neighbor++;
@@ -38,8 +38,9 @@ void ClassicMode::advanceGen(){
           neighbor = 0;
         }
 
+      //TOP RIGHT CORNER
       else if((i == 0) && (j == (column - 1))){
-        if(gameGrid->getCell(i, j+1).getState() == true){
+        if(gameGrid->getCell(i, j-1).getState() == true){ //CHECK THIS
             neighbor++;
           }
           if(gameGrid->getCell(i+1,j).getState() == true){
@@ -48,6 +49,7 @@ void ClassicMode::advanceGen(){
           if(gameGrid->getCell(i+1,j-1).getState() == true){
             neighbor++;
           }
+
         // NEW CELL >> tempGrid
         GameModes::getGrid(i, j, neighbor);
         neighbor = 0;
