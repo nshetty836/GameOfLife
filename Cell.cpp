@@ -4,7 +4,7 @@ using namespace std;
 Cell::Cell(){
 	isAlive = false;
 }
-Cell::Cell(bool alive ){
+Cell::Cell(bool alive){
 	isAlive = alive;
 }
 

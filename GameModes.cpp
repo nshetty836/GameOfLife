@@ -2,8 +2,10 @@
 #include <iostream>
 #include <unistd.h>
 
-
+//default constructor
 GameModes::GameModes(){}
+
+//overloaded constructor
 GameModes::GameModes(int rows, int columns, float popDensity){
   row = rows;
   column = columns;
@@ -12,9 +14,7 @@ GameModes::GameModes(int rows, int columns, float popDensity){
   tempGrid = new Grid(row, column);
   prevGrid = new Grid(row, column);
   tempGrid->setGrid(gameGrid);
-
 }
-
 GameModes::GameModes(string fileName){
   gameGrid = new Grid(fileName);
   row = gameGrid->getRows();
@@ -24,6 +24,7 @@ GameModes::GameModes(string fileName){
   prevGrid = new Grid(row, column);
   tempGrid->setGrid(gameGrid);
 }
+//destructor
 GameModes::~GameModes(){
   delete prevGrid;
   delete gameGrid;

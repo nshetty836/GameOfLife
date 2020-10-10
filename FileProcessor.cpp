@@ -26,7 +26,6 @@ bool FileProcessor::checkFile(string fileName){
   return true;
 }
 
-
 //reading file and getting height and width
 void FileProcessor::readFile(string fileName){
   ifstream fileIn;
@@ -41,9 +40,7 @@ void FileProcessor::readFile(string fileName){
     fileIn >> tempLine;
     allCells += tempLine;
   }
-
   fileIn.close();
-
 }
 
 void FileProcessor::writeFile(string outFileName, string output){

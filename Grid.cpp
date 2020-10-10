@@ -4,6 +4,8 @@
 #include "FileProcessor.h"
 
 using namespace std;
+
+//default constructor
 Grid::Grid(){
 	rows = 5;
 	columns = 5;
@@ -11,7 +13,7 @@ Grid::Grid(){
   for(int i = 0; i < rows; i++)
       gridArray[i] = new Cell[columns];
 }
-
+//overloaded constructor
 Grid::Grid(int r, int c){
 	rows = r;
 	columns = c;
@@ -19,7 +21,7 @@ Grid::Grid(int r, int c){
   for(int i = 0; i < rows; i++)
       gridArray[i] = new Cell[columns];
 }
-
+//overloaded constructor for random population
 Grid::Grid(int r, int c, double popDensity){
 	rows = r;
 	columns = c;
@@ -37,7 +39,7 @@ Grid::Grid(int r, int c, double popDensity){
 			i--;
 	}
 }
-
+//overloaded constructor for file population
 Grid::Grid(string fileInput){
 	FileProcessor *fr = new FileProcessor();
 	fr->readFile(fileInput);
@@ -57,7 +59,7 @@ Grid::Grid(string fileInput){
 		}
 	}
 }
-
+//destructor
 Grid::~Grid(){
 	delete gridArray;
 }
@@ -114,11 +116,11 @@ string Grid::toString(){
 	}
 	return ret;
 }
-
+// prints grid to console
 void Grid::printGrid(){
 	cout << this->toString() << endl;
 }
-
+// prints grid to file
 void Grid::printToFile(string outFileName, int gen){
 	FileProcessor *fr = new FileProcessor();
 	if(gen ==1){
@@ -126,7 +128,7 @@ void Grid::printToFile(string outFileName, int gen){
 	}
 	fr->writeFile(outFileName, "Generation " + to_string(gen) + ":\n" + this->toString());
 }
-
+// checking if grid is empty
 bool Grid::isEmpty(){
 	bool ret = true;
 	for(int i = 0; i < rows ; i++){
