@@ -1,6 +1,5 @@
 #include <iostream>
 #include <cmath>
-
 #include "Grid.h"
 #include "FileProcessor.h"
 
@@ -57,33 +56,24 @@ Grid::Grid(string fileInput){
 			count++;
 		}
 	}
-
-	// for (int i = 0; i < fr->gridSize; i++) {
-  //   if(allCells[i] != ' ')
-  //     gridCells[i] = allCells[i];
-  // }
-  // for (int i = 0; i < gridSize; i++) {
-  //   cout << gridCells[i];
-  // }
-
 }
 
 Grid::~Grid(){
-
+	delete gridArray;
 }
 
 int Grid::genRandNum(int low, int high){
 	return (rand() % (high - low + 1)) + low;
 }
 
-
-
 int Grid::getRows(){
 	return rows;
 }
+
 int Grid::getColumns(){
 	return columns;
 }
+
 Cell Grid::getCell(int row, int col){
 	return gridArray[row][col];
 }
@@ -105,30 +95,12 @@ bool Grid::equals(Grid *g){
 	return equals;
 }
 
-//move all Cells forward one generation (this might go in the diff modes?)
-void Grid::advanceGen(){
-
-}
-
-//THIS IS WHAT CHANGES FOR DIFF MODES
-Cell* Grid::getNeighbors(int row, int col){
-
-}
-
 void Grid::setGrid(Grid *g){
 	for(int i = 0; i < rows; i++){
     for(int j = 0; j < columns; j++){
       gridArray[i][j].setState(g->getCell(i, j).getState());
     }
   }
-}
-
-void Grid::clearGrid(){
-	for(int i = 0; i < rows ; i++){
-		for(int j = 0; j < columns; j++){
-			gridArray[i][j].setDead();
-		}
-	}
 }
 
 string Grid::toString(){

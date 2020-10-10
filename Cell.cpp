@@ -29,11 +29,6 @@ void Cell::setAlive(){ //took out parameter bool alive
 	isAlive = true;
 }
 
-//TODO: FINISH THIS
-void Cell::updateState(Cell *neighbors[]){ //idk if this will work  (pointer?)
-
-}
-
 bool Cell::equals(Cell c){
 	bool ret;
 	if(c.getState() == isAlive)

@@ -2,7 +2,6 @@
 #define GAME_MODES_H
 #include "Grid.h"
 
-
 using namespace std;
 
 class GameModes{
